@@ -8,39 +8,40 @@ const Home = () => {
   return (
     <div className="flex flex-col">
       {/* Hero Section */}
-      <section className="relative overflow-hidden bg-gradient-to-br from-brand-blue-dark via-brand-blue to-cyber-accent text-white">
-        <div className="absolute inset-0 bg-gradient-to-br from-black/20 to-transparent" />
+      <section className="relative overflow-hidden bg-gradient-hero text-white">
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_50%,rgba(255,215,0,0.1),transparent_50%)]" />
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_70%_50%,rgba(0,100,255,0.1),transparent_50%)]" />
         <div className="relative mx-auto max-w-7xl px-4 py-24 sm:px-6 lg:px-8 lg:py-32">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div className="space-y-8">
               <div className="space-y-4">
-                <h1 className="text-4xl font-bold tracking-tight sm:text-5xl lg:text-6xl">
+                <h1 className="text-4xl font-bold tracking-tight sm:text-5xl lg:text-6xl animate-fade-in">
                   Making Cybersecurity{' '}
-                  <span className="text-cyan-300">Simple & Accessible</span>
+                  <span className="text-brand-yellow drop-shadow-glow">Simple & Accessible</span>
                 </h1>
                 <p className="text-xl text-blue-100 max-w-lg">
                   We translate technical complexity into clear, practical learning experiences for students, educators, and professionals.
                 </p>
               </div>
               <div className="flex flex-col sm:flex-row gap-4">
-                <Button asChild size="lg" variant="secondary" className="bg-white text-brand-blue-dark hover:bg-blue-50">
+                <Button asChild size="lg" variant="flashy">
                   <Link to="/services">
                     Explore Our Programs
                     <ArrowRight className="ml-2 h-5 w-5" />
                   </Link>
                 </Button>
-                <Button asChild size="lg" variant="outline" className="border-white/20 text-white hover:bg-white/10">
+                <Button asChild size="lg" variant="outline" className="border-2 border-brand-yellow text-brand-yellow hover:bg-brand-yellow hover:text-brand-blue-dark">
                   <Link to="/contact">Get Started</Link>
                 </Button>
               </div>
             </div>
             <div className="flex justify-center lg:justify-end">
               <div className="relative">
-                <div className="absolute inset-0 bg-gradient-to-r from-cyan-400 to-blue-500 rounded-full blur-3xl opacity-30 animate-pulse" />
+                <div className="absolute inset-0 bg-gradient-to-r from-brand-yellow to-brand-blue rounded-full blur-3xl opacity-40 animate-pulse" />
                 <img 
                   src={logo} 
                   alt="Group 7 Cyber Ed Inc." 
-                  className="relative w-80 h-auto drop-shadow-2xl"
+                  className="relative w-80 h-auto drop-shadow-2xl hover:scale-105 transition-transform duration-300"
                 />
               </div>
             </div>
@@ -52,22 +53,22 @@ const Home = () => {
       <section className="py-16 bg-muted/30">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div className="text-center">
-              <div className="mx-auto w-16 h-16 bg-gradient-to-br from-brand-blue to-cyber-accent rounded-full flex items-center justify-center mb-4">
+            <div className="text-center hover:scale-105 transition-transform duration-300">
+              <div className="mx-auto w-16 h-16 bg-gradient-blue-yellow rounded-full flex items-center justify-center mb-4 shadow-glow">
                 <Users className="h-8 w-8 text-white" />
               </div>
               <h3 className="text-2xl font-bold text-foreground">Students First</h3>
               <p className="text-muted-foreground">Educational programs designed for learners of all backgrounds</p>
             </div>
-            <div className="text-center">
-              <div className="mx-auto w-16 h-16 bg-gradient-to-br from-brand-blue to-cyber-accent rounded-full flex items-center justify-center mb-4">
+            <div className="text-center hover:scale-105 transition-transform duration-300">
+              <div className="mx-auto w-16 h-16 bg-gradient-blue-yellow rounded-full flex items-center justify-center mb-4 shadow-glow">
                 <BookOpen className="h-8 w-8 text-white" />
               </div>
               <h3 className="text-2xl font-bold text-foreground">Hands-On Learning</h3>
               <p className="text-muted-foreground">Practical experiences through labs, simulations, and case studies</p>
             </div>
-            <div className="text-center">
-              <div className="mx-auto w-16 h-16 bg-gradient-to-br from-brand-blue to-cyber-accent rounded-full flex items-center justify-center mb-4">
+            <div className="text-center hover:scale-105 transition-transform duration-300">
+              <div className="mx-auto w-16 h-16 bg-gradient-blue-yellow rounded-full flex items-center justify-center mb-4 shadow-glow">
                 <Shield className="h-8 w-8 text-white" />
               </div>
               <h3 className="text-2xl font-bold text-foreground">Cyber Literacy</h3>
@@ -81,12 +82,12 @@ const Home = () => {
       <section className="py-20">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="grid lg:grid-cols-2 gap-12">
-            <Card className="border-0 shadow-card bg-gradient-card">
+            <Card className="border-2 border-brand-blue/20 shadow-cyber bg-gradient-card hover:shadow-glow transition-all duration-300 hover:scale-105">
               <CardHeader className="pb-6">
-                <div className="w-12 h-12 bg-gradient-to-br from-brand-blue to-cyber-accent rounded-lg flex items-center justify-center mb-4">
+                <div className="w-12 h-12 bg-gradient-blue-yellow rounded-lg flex items-center justify-center mb-4 shadow-glow">
                   <Target className="h-6 w-6 text-white" />
                 </div>
-                <CardTitle className="text-2xl">Our Mission</CardTitle>
+                <CardTitle className="text-2xl text-brand-blue-dark">Our Mission</CardTitle>
               </CardHeader>
               <CardContent>
                 <p className="text-muted-foreground leading-relaxed">
@@ -95,12 +96,12 @@ const Home = () => {
               </CardContent>
             </Card>
 
-            <Card className="border-0 shadow-card bg-gradient-card">
+            <Card className="border-2 border-brand-yellow/20 shadow-yellow bg-gradient-card hover:shadow-glow transition-all duration-300 hover:scale-105">
               <CardHeader className="pb-6">
-                <div className="w-12 h-12 bg-gradient-to-br from-brand-blue to-cyber-accent rounded-lg flex items-center justify-center mb-4">
-                  <Globe className="h-6 w-6 text-white" />
+                <div className="w-12 h-12 bg-gradient-yellow rounded-lg flex items-center justify-center mb-4 shadow-yellow">
+                  <Globe className="h-6 w-6 text-brand-blue-dark" />
                 </div>
-                <CardTitle className="text-2xl">Our Vision</CardTitle>
+                <CardTitle className="text-2xl text-brand-blue-dark">Our Vision</CardTitle>
               </CardHeader>
               <CardContent>
                 <p className="text-muted-foreground leading-relaxed">
@@ -123,36 +124,36 @@ const Home = () => {
           </div>
 
           <div className="grid md:grid-cols-3 gap-8">
-            <Card className="border-0 shadow-card hover:shadow-cyber transition-all duration-300 bg-gradient-card group">
+            <Card className="border-2 border-brand-blue/20 shadow-cyber hover:shadow-glow transition-all duration-300 bg-gradient-card group hover:scale-105">
               <CardHeader>
-                <div className="w-12 h-12 bg-gradient-to-br from-brand-blue to-cyber-accent rounded-lg flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300">
+                <div className="w-12 h-12 bg-gradient-blue-yellow rounded-lg flex items-center justify-center mb-4 group-hover:scale-110 group-hover:rotate-12 transition-all duration-300 shadow-glow">
                   <Zap className="h-6 w-6 text-white" />
                 </div>
-                <CardTitle>Cyber Literacy Bootcamps</CardTitle>
+                <CardTitle className="text-brand-blue-dark">Cyber Literacy Bootcamps</CardTitle>
                 <CardDescription>
                   Beginner-friendly crash courses covering the foundations of cybersecurity
                 </CardDescription>
               </CardHeader>
             </Card>
 
-            <Card className="border-0 shadow-card hover:shadow-cyber transition-all duration-300 bg-gradient-card group">
+            <Card className="border-2 border-brand-yellow/20 shadow-yellow hover:shadow-glow transition-all duration-300 bg-gradient-card group hover:scale-105">
               <CardHeader>
-                <div className="w-12 h-12 bg-gradient-to-br from-brand-blue to-cyber-accent rounded-lg flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300">
-                  <Lock className="h-6 w-6 text-white" />
+                <div className="w-12 h-12 bg-gradient-yellow rounded-lg flex items-center justify-center mb-4 group-hover:scale-110 group-hover:rotate-12 transition-all duration-300 shadow-yellow">
+                  <Lock className="h-6 w-6 text-brand-blue-dark" />
                 </div>
-                <CardTitle>Digital Ethics & Privacy</CardTitle>
+                <CardTitle className="text-brand-blue-dark">Digital Ethics & Privacy</CardTitle>
                 <CardDescription>
                   Building awareness on online behavior, personal data protection, and surveillance ethics
                 </CardDescription>
               </CardHeader>
             </Card>
 
-            <Card className="border-0 shadow-card hover:shadow-cyber transition-all duration-300 bg-gradient-card group">
+            <Card className="border-2 border-brand-blue/20 shadow-cyber hover:shadow-glow transition-all duration-300 bg-gradient-card group hover:scale-105">
               <CardHeader>
-                <div className="w-12 h-12 bg-gradient-to-br from-brand-blue to-cyber-accent rounded-lg flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300">
+                <div className="w-12 h-12 bg-gradient-blue-yellow rounded-lg flex items-center justify-center mb-4 group-hover:scale-110 group-hover:rotate-12 transition-all duration-300 shadow-glow">
                   <Users className="h-6 w-6 text-white" />
                 </div>
-                <CardTitle>School & Club Partnerships</CardTitle>
+                <CardTitle className="text-brand-blue-dark">School & Club Partnerships</CardTitle>
                 <CardDescription>
                   Customized learning modules for academic institutions and coding clubs
                 </CardDescription>
@@ -161,7 +162,7 @@ const Home = () => {
           </div>
 
           <div className="text-center mt-12">
-            <Button asChild size="lg" className="bg-gradient-to-r from-brand-blue to-cyber-accent text-white hover:shadow-cyber">
+            <Button asChild size="lg" variant="flashy">
               <Link to="/services">
                 View All Programs
                 <ArrowRight className="ml-2 h-5 w-5" />
