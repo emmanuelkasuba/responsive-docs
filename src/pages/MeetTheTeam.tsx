@@ -21,23 +21,23 @@ import {
 const MeetTheTeam = () => {
   const teamMembers = [
     {
-      name: 'Alex Chen',
-      role: 'Founder & Lead Educator',
-      image: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=400&h=400&fit=crop&crop=face',
-      bio: 'Former cybersecurity analyst with 8+ years of experience in threat intelligence and digital forensics.',
-      expertise: ['Threat Analysis', 'Digital Forensics', 'Curriculum Design'],
+      name: 'Emmanuel Kasuba',
+      role: 'CEO & Group leader',
+      image: '/IMG_.jpg',
+      bio: 'Group leader and Idealist, sparked insight in fellow group members and took leader position to ensure idea actualisation',
+      expertise: ['Tech surport', 'Lead web ui designer', 'Group memeber engagement' , 'React dev'],
       social: {
-        linkedin: '#',
-        github: '#',
-        email: 'alex@group7cybered.com'
+        linkedin: 'https://www.linkedin.com/in/emmanuel-kasuba-706949353',
+        github: 'https://github.com/emmanuelkasuba',
+        email: 'kasubaemmanuel@gmail.com'
       }
     },
     {
-      name: 'Sarah Rodriguez',
-      role: 'Educational Director',
-      image: 'https://images.unsplash.com/photo-1494790108755-2616b612b786?w=400&h=400&fit=crop&crop=face',
+      name: 'Francis Mwamba',
+      role: 'Project Manager (PR)',
+      image: '####',
       bio: 'Education specialist focused on making technical concepts accessible to diverse learning audiences.',
-      expertise: ['Pedagogy', 'Curriculum Development', 'Student Engagement'],
+      expertise: ['Organisation', 'Communication', 'Effective project follow'],
       social: {
         linkedin: '#',
         github: '#',
@@ -48,11 +48,10 @@ const MeetTheTeam = () => {
       name: 'Marcus Johnson',
       role: 'Technical Lead',
       image: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=400&fit=crop&crop=face',
-      bio: 'Security engineer passionate about building practical learning environments and hands-on labs.',
+      bio: 'Projects managing is my expertise, my direction has ',
       expertise: ['Network Security', 'Lab Development', 'Tool Creation'],
       social: {
         linkedin: '#',
-        github: '#',
         email: 'marcus@group7cybered.com'
       }
     },
