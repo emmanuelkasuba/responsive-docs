@@ -19,6 +19,13 @@ export default {
         ring: "hsl(var(--ring))",
         background: "hsl(var(--background))",
         foreground: "hsl(var(--foreground))",
+        
+        // Brand colors
+        "brand-blue": "hsl(var(--brand-blue))",
+        "brand-blue-dark": "hsl(var(--brand-blue-dark))",
+        "brand-blue-light": "hsl(var(--brand-blue-light))",
+        "cyber-accent": "hsl(var(--cyber-accent))",
+        "cyber-glow": "hsl(var(--cyber-glow))",
         primary: {
           DEFAULT: "hsl(var(--primary))",
           foreground: "hsl(var(--primary-foreground))",
@@ -57,6 +64,24 @@ export default {
           border: "hsl(var(--sidebar-border))",
           ring: "hsl(var(--sidebar-ring))",
         },
+      },
+      backgroundImage: {
+        "gradient-brand": "var(--gradient-brand)",
+        "gradient-hero": "var(--gradient-hero)", 
+        "gradient-card": "var(--gradient-card)",
+      },
+      boxShadow: {
+        "cyber": "var(--shadow-cyber)",
+        "glow": "var(--shadow-glow)",
+        "card": "var(--shadow-card)",
+      },
+      fontFamily: {
+        heading: "var(--font-heading)",
+        body: "var(--font-body)",
+      },
+      transitionTimingFunction: {
+        "smooth": "var(--transition-smooth)",
+        "bounce": "var(--transition-bounce)",
       },
       borderRadius: {
         lg: "var(--radius)",

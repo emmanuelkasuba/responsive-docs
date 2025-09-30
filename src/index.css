@@ -2,41 +2,68 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
-All colors MUST be HSL.
-*/
+/* Cyber Ed Inc. Design System - Professional Cybersecurity Theme */
 
 @layer base {
   :root {
+    /* Core brand colors inspired by the logo */
     --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
+    --foreground: 203 62% 15%;
 
     --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
+    --card-foreground: 203 62% 15%;
 
     --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
+    --popover-foreground: 203 62% 15%;
 
-    --primary: 222.2 47.4% 11.2%;
-    --primary-foreground: 210 40% 98%;
+    /* Primary: Deep navy blue from logo */
+    --primary: 203 62% 25%;
+    --primary-foreground: 0 0% 100%;
+    
+    /* Brand blue gradient colors */
+    --brand-blue: 204 100% 50%;
+    --brand-blue-dark: 203 62% 25%;
+    --brand-blue-light: 204 85% 65%;
+    
+    /* Cyber theme colors */
+    --cyber-accent: 187 100% 42%;
+    --cyber-glow: 187 100% 60%;
 
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
+    --secondary: 204 45% 96%;
+    --secondary-foreground: 203 62% 25%;
 
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
+    --muted: 210 20% 98%;
+    --muted-foreground: 203 25% 45%;
 
-    --accent: 210 40% 96.1%;
-    --accent-foreground: 222.2 47.4% 11.2%;
+    --accent: 187 100% 95%;
+    --accent-foreground: 203 62% 25%;
+    
+    /* Gradients */
+    --gradient-brand: linear-gradient(135deg, hsl(var(--brand-blue)) 0%, hsl(var(--cyber-accent)) 100%);
+    --gradient-hero: linear-gradient(135deg, hsl(var(--brand-blue-dark)) 0%, hsl(var(--brand-blue)) 50%, hsl(var(--cyber-accent)) 100%);
+    --gradient-card: linear-gradient(145deg, hsl(0 0% 100%) 0%, hsl(204 45% 98%) 100%);
+    
+    /* Shadows with cyber glow effect */
+    --shadow-cyber: 0 10px 40px -15px hsl(var(--brand-blue) / 0.3);
+    --shadow-glow: 0 0 30px hsl(var(--cyber-glow) / 0.4);
+    --shadow-card: 0 4px 20px -2px hsl(var(--brand-blue) / 0.1);
 
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 210 40% 98%;
 
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 222.2 84% 4.9%;
+    --border: 204 25% 90%;
+    --input: 204 25% 90%;
+    --ring: 204 100% 50%;
 
-    --radius: 0.5rem;
+    --radius: 0.75rem;
+    
+    /* Typography */
+    --font-heading: 'Inter', system-ui, sans-serif;
+    --font-body: 'Inter', system-ui, sans-serif;
+    
+    /* Animations */
+    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-bounce: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
 
     --sidebar-background: 0 0% 98%;
 
@@ -56,17 +83,17 @@ All colors MUST be HSL.
   }
 
   .dark {
-    --background: 222.2 84% 4.9%;
-    --foreground: 210 40% 98%;
+    --background: 203 62% 8%;
+    --foreground: 204 45% 96%;
 
-    --card: 222.2 84% 4.9%;
-    --card-foreground: 210 40% 98%;
+    --card: 203 62% 12%;
+    --card-foreground: 204 45% 96%;
 
-    --popover: 222.2 84% 4.9%;
-    --popover-foreground: 210 40% 98%;
+    --popover: 203 62% 12%;
+    --popover-foreground: 204 45% 96%;
 
-    --primary: 210 40% 98%;
-    --primary-foreground: 222.2 47.4% 11.2%;
+    --primary: 204 85% 65%;
+    --primary-foreground: 203 62% 8%;
 
     --secondary: 217.2 32.6% 17.5%;
     --secondary-foreground: 210 40% 98%;
