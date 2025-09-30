@@ -1,4 +1,4 @@
-// Fixed Layout.tsx
+// Fixed Layout.tsx - Standardized paths
 import { ReactNode } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
@@ -16,10 +16,10 @@ const Layout = ({ children }: LayoutProps) => {
 
   const navigation = [
     { name: 'Home', href: '/', icon: Shield },
-    { name: 'Team', href: '/MeetTheTeam', icon: Heart },
+    { name: 'About', href: '/about', icon: Heart },
     { name: 'Services', href: '/services', icon: BookOpen },
     { name: 'Our Approach', href: '/approach', icon: Target },
-    { name: 'Team', href: '/MeetTheTeam', icon: Users },
+    { name: 'Team', href: '/team', icon: Users },
     { name: 'Contact', href: '/contact', icon: Mail },
   ];
 

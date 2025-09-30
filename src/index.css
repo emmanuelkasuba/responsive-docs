@@ -138,7 +138,8 @@
     @apply bg-background text-foreground;
   }
 }
-/* Add to your index.css */
+
+/* Enhanced Animations */
 @keyframes pulse-slow {
   0%, 100% {
     opacity: 1;
@@ -148,6 +149,59 @@
   }
 }
 
+@keyframes fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes glow {
+  0%, 100% {
+    box-shadow: 0 0 20px hsl(220 90% 60% / 0.3);
+  }
+  50% {
+    box-shadow: 0 0 40px hsl(220 90% 60% / 0.6);
+  }
+}
+
 .animate-pulse-slow {
   animation: pulse-slow 3s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+.animate-fade-in {
+  animation: fade-in 0.6s ease-out;
+}
+
+.animate-glow {
+  animation: glow 2s ease-in-out infinite;
+}
+
+/* Custom utilities */
+.drop-shadow-glow {
+  filter: drop-shadow(0 0 8px hsl(220 90% 60% / 0.4));
+}
+
+.shadow-glow {
+  box-shadow: 0 0 30px hsl(220 90% 60% / 0.4);
+}
+
+.bg-gradient-hero {
+  background: linear-gradient(135deg, hsl(220 90% 30%) 0%, hsl(220 90% 50%) 50%, hsl(45 100% 55%) 100%);
+}
+
+.bg-gradient-card {
+  background: linear-gradient(145deg, hsl(0 0% 100%) 0%, hsl(220 20% 98%) 100%);
+}
+
+.bg-gradient-blue-yellow {
+  background: linear-gradient(90deg, hsl(220 90% 50%) 0%, hsl(45 100% 55%) 100%);
+}
+
+.bg-gradient-yellow {
+  background: linear-gradient(135deg, hsl(45 100% 55%) 0%, hsl(40 85% 50%) 100%);
 }

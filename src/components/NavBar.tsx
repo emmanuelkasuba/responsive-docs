@@ -1,4 +1,4 @@
-// Enhanced Navbar.tsx
+// Fixed NavBar.tsx - Standardized paths
 import { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { 
@@ -15,7 +15,7 @@ import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { Menu, X, Users, Shield, BookOpen, Target, Heart, Zap } from "lucide-react";
 import { cn } from "@/lib/utils";
 
-const Navbar = () => {
+const NavBar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const location = useLocation();
 
@@ -42,7 +42,7 @@ const Navbar = () => {
     },
     {
       title: "Team",
-      href: "/MeetTheTeam",
+      href: "/team",
       icon: Users,
     },
     {
@@ -207,4 +207,4 @@ const Navbar = () => {
   );
 };
 
-export default Navbar;
+export default NavBar;

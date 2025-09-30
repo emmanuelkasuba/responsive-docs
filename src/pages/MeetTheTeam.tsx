@@ -1,4 +1,4 @@
-// MeetTheTeam.tsx
+// MeetTheTeam.tsx (no changes needed to the content, just ensuring correct export)
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
