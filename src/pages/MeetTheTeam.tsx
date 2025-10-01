@@ -1,4 +1,3 @@
-// MeetTheTeam.tsx (no changes needed to the content, just ensuring correct export)
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
@@ -15,17 +14,37 @@ import {
   Shield,
   Globe,
   BookOpen,
-  Sparkles
+  Sparkles,
+  Phone
 } from 'lucide-react';
+
+// Import images directly
+import mukukaImage from './imges/mukuka.jpeg';
+import emmanuelImage from './imges/emmanuel.jpg';
+import francisImage from './imges/francis.jpeg';
+import amosImage from './imges/amos.jpeg';
+import charityImage from './imges/charity.jpeg';
+import paulImage from './imges/paul.jpeg'; 
+import placeholderImage from './imges/placeholder-avatar.jpg';
 
 const MeetTheTeam = () => {
   const teamMembers = [
     {
+      name: 'Sam Mukuka',
+      role: 'Founder',
+      image: mukukaImage,
+      bio:'Lecturer and the Person who brought the group members Together',
+      expertise: ['Mentoring', 'Support', 'Full Stack dev'],
+      social: {
+        linkedin: 'https://www.linkedin.com/in/sam-kasele-mukuka-85728b34',
+      }
+    },
+    {
       name: 'Emmanuel Kasuba',
       role: 'CEO & Group leader',
-      image: '/IMG_.jpg',
+      image: emmanuelImage,
       bio: 'Group leader and Idealist, sparked insight in fellow group members and took leader position to ensure idea actualisation',
-      expertise: ['Tech surport', 'Lead web ui designer', 'Group memeber engagement' , 'React dev'],
+      expertise: ['Tech support', 'Lead web UI designer', 'Group member engagement', 'React dev'],
       social: {
         linkedin: 'https://www.linkedin.com/in/emmanuel-kasuba-706949353',
         github: 'https://github.com/emmanuelkasuba',
@@ -35,36 +54,56 @@ const MeetTheTeam = () => {
     {
       name: 'Francis Mwamba',
       role: 'Project Manager (PR)',
-      image: '####',
-      bio: 'Education specialist focused on making technical concepts accessible to diverse learning audiences.',
+      image: francisImage,
+      bio: 'I am a highly organised and communicative individual with a passion for ensuring projects are completed efficiently and effectively.',
       expertise: ['Organisation', 'Communication', 'Effective project follow'],
       social: {
-        linkedin: '#',
-        github: '#',
-        email: 'sarah@group7cybered.com'
+        linkedin: 'https://www.linkedin.com/in/francismwamba',
+        email: 'mwambafrancis975@gmail.com'
       }
     },
     {
-      name: 'Marcus Johnson',
-      role: 'Technical Lead',
-      image: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=400&fit=crop&crop=face',
-      bio: 'Projects managing is my expertise, my direction has ',
-      expertise: ['Network Security', 'Lab Development', 'Tool Creation'],
+      name: 'Amos Zulu',
+      role: 'Workshop Coordinator',
+      image: amosImage,
+      bio: 'I am passionate about cybersecurity education and dedicated to creating engaging, hands-on learning experiences that empower individuals to protect themselves online.',
+      expertise: ['Venue & location placement', 'Event Coordination', 'Public Speaking'],
       social: {
-        linkedin: '#',
-        email: 'marcus@group7cybered.com'
+        email: 'amoszuluamos@gmail.com',
+        phone: '+260761751967',
       }
     },
     {
-      name: 'Dr. Elena Park',
-      role: 'Research & Ethics Advisor',
-      image: 'https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?w=400&h=400&fit=crop&crop=face',
-      bio: 'Digital ethics researcher and advocate for responsible technology education and privacy rights.',
-      expertise: ['Digital Ethics', 'Privacy Law', 'Research Methodology'],
+      name: 'Charity Mwansa Kunda',
+      role: 'Researcher & Ethics Advisor',
+      image: charityImage,
+      bio: 'I am dedicated to ensuring our educational initiatives uphold the highest standards of digital ethics and privacy, fostering trust and integrity in all our endeavors.',
+      expertise: ['Public Ethics Advocate', 'Language variation', 'Research'],
       social: {
-        linkedin: '#',
-        github: '#',
-        email: 'elena@group7cybered.com'
+        email: 'charitykundamwansa@gmail.com',
+        phone: '+260770219766',
+      }
+    },
+    {
+      name: 'Paul Kashiba',
+      role: 'Registrar',
+      image: paulImage,
+      bio: 'I am a very organised person and I like to keep things in order',
+      expertise: ['Organisation', 'Communication', 'Time management'],
+      social: {
+        linkedin: 'https://www.linkedin.com/in/paul-kashiba-5b2b99210',
+        email: '',
+      }
+    },
+    {
+      name: 'Jessica Sumaili',
+      role: 'Company Online Voice',
+      image: placeholderImage,
+      bio: 'Social media manager and content creator. Passionate about digital ethics and privacy advocacy.',
+      expertise: ['Influencer/Content Creator', 'Ethics', 'Communication'],
+      social: {
+        email: '',
+        phone: '',
       }
     }
   ];
@@ -91,6 +130,28 @@ const MeetTheTeam = () => {
       description: 'We break down barriers to make cybersecurity education available to everyone.'
     }
   ];
+
+  // Function to handle social media clicks
+  const handleSocialClick = (type: string, value: string) => {
+    if (!value) return;
+    
+    switch (type) {
+      case 'email':
+        window.location.href = `mailto:${value}`;
+        break;
+      case 'linkedin':
+        window.open(value, '_blank');
+        break;
+      case 'github':
+        window.open(value, '_blank');
+        break;
+      case 'phone':
+        window.location.href = `tel:${value}`;
+        break;
+      default:
+        break;
+    }
+  };
 
   return (
     <div className="flex flex-col">
@@ -125,8 +186,8 @@ const MeetTheTeam = () => {
             </p>
           </div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {teamMembers.map((member, index) => (
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
+            {teamMembers.map((member) => (
               <Card 
                 key={member.name} 
                 className="border-0 shadow-card bg-gradient-card hover:shadow-cyber transition-all duration-500 group hover:scale-105"
@@ -137,7 +198,7 @@ const MeetTheTeam = () => {
                     <img
                       src={member.image}
                       alt={member.name}
-                      className="relative w-32 h-32 rounded-full mx-auto mb-4 border-4 border-white shadow-lg group-hover:border-brand-blue/20 transition-colors duration-300"
+                      className="relative w-32 h-32 rounded-full mx-auto mb-4 border-4 border-white shadow-lg group-hover:border-brand-blue/20 transition-colors duration-300 object-cover"
                     />
                   </div>
                   <CardTitle className="text-xl text-center text-foreground">{member.name}</CardTitle>
@@ -163,15 +224,46 @@ const MeetTheTeam = () => {
                   </div>
 
                   <div className="flex justify-center gap-3 pt-2">
-                    <Button variant="ghost" size="icon" className="h-8 w-8 text-muted-foreground hover:text-brand-blue hover:bg-brand-blue/10">
-                      <Mail className="h-4 w-4" />
-                    </Button>
-                    <Button variant="ghost" size="icon" className="h-8 w-8 text-muted-foreground hover:text-brand-blue hover:bg-brand-blue/10">
-                      <Linkedin className="h-4 w-4" />
-                    </Button>
-                    <Button variant="ghost" size="icon" className="h-8 w-8 text-muted-foreground hover:text-brand-blue hover:bg-brand-blue/10">
-                      <Github className="h-4 w-4" />
-                    </Button>
+                    {member.social.email && (
+                      <Button 
+                        variant="ghost" 
+                        size="icon" 
+                        className="h-8 w-8 text-muted-foreground hover:text-brand-blue hover:bg-brand-blue/10"
+                        onClick={() => handleSocialClick('email', member.social.email)}
+                      >
+                        <Mail className="h-4 w-4" />
+                      </Button>
+                    )}
+                    {member.social.linkedin && (
+                      <Button 
+                        variant="ghost" 
+                        size="icon" 
+                        className="h-8 w-8 text-muted-foreground hover:text-brand-blue hover:bg-brand-blue/10"
+                        onClick={() => handleSocialClick('linkedin', member.social.linkedin)}
+                      >
+                        <Linkedin className="h-4 w-4" />
+                      </Button>
+                    )}
+                    {member.social.github && (
+                      <Button 
+                        variant="ghost" 
+                        size="icon" 
+                        className="h-8 w-8 text-muted-foreground hover:text-brand-blue hover:bg-brand-blue/10"
+                        onClick={() => handleSocialClick('github', member.social.github)}
+                      >
+                        <Github className="h-4 w-4" />
+                      </Button>
+                    )}
+                    {member.social.phone && (
+                      <Button 
+                        variant="ghost" 
+                        size="icon" 
+                        className="h-8 w-8 text-muted-foreground hover:text-brand-blue hover:bg-brand-blue/10"
+                        onClick={() => handleSocialClick('phone', member.social.phone)}
+                      >
+                        <Phone className="h-4 w-4" />
+                      </Button>
+                    )}
                   </div>
                 </CardContent>
               </Card>
