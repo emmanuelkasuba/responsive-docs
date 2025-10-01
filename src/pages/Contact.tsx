@@ -22,25 +22,25 @@ const Contact = () => {
       icon: Mail,
       title: 'Email Us',
       description: 'Send us a message and we\'ll respond within 24 hours',
-      details: 'info@group7cybered.com'
+      details: 'kasubaemmanuel@gmail.com'
     },
     {
       icon: Phone,
       title: 'Call Us',
       description: 'Speak directly with our education specialists',
-      details: '+1 (555) 123-4567'
+      details: '+260 972 354 969'
     },
     {
       icon: MapPin,
       title: 'Visit Us',
       description: 'Schedule an in-person meeting at our office',
-      details: '123 Cyber Education Way, Tech City, TC 12345'
+      details: 'zut campus in ndola'
     },
     {
       icon: Clock,
       title: 'Office Hours',
       description: 'We\'re available to help during business hours',
-      details: 'Mon-Fri: 9:00 AM - 6:00 PM EST'
+      details: 'Mon,wed,tue: every after the last class of these days'
     }
   ];
 
