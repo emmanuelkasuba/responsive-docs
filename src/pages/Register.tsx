@@ -65,14 +65,14 @@ const Register = () => {
     {
       id: 1,
       src: '/images/meetings/meeting-1.jpg',
-      caption: 'Project Kickoff Meeting - October 15, 2024',
-      date: '2024-10-15'
+      caption: 'making the react website and sharing github repository',
+      date: '2025-10-01'
     },
     {
       id: 2,
       src: '/images/meetings/meeting-2.jpg',
-      caption: 'Curriculum Brainstorming Session',
-      date: '2024-10-22'
+      caption: 'planning the creation of the group website, jessica is assigned as social media personaility',
+      date: '2025-09-30'
     },
     {
       id: 3,
