@@ -1,4 +1,4 @@
-// Fixed NavBar.tsx - Standardized paths
+// Fixed NavBar.tsx - Improved spacing and responsiveness
 import { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { 
@@ -12,7 +12,7 @@ import {
 } from "@/components/ui/navigation-menu";
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
-import { Menu, X, Users, Shield, BookOpen, Target, Heart, Zap } from "lucide-react";
+import { Menu, X, Users, Shield, BookOpen, Target, Heart, Zap, FileText, Calendar } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 const NavBar = () => {
@@ -50,6 +50,16 @@ const NavBar = () => {
       href: "/contact",
       icon: Zap,
     },
+    {
+      title: "Assigned Work",
+      href: "/AssignedWork",
+      icon: FileText,
+    },
+    {
+      title: "Meeting Register",
+      href: "/Register",
+      icon: Calendar,
+    },
   ];
 
   const isActivePath = (path: string) => {
@@ -61,7 +71,7 @@ const NavBar = () => {
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
           {/* Logo */}
-          <Link to="/" className="flex items-center space-x-2 group">
+          <Link to="/" className="flex items-center space-x-2 group flex-shrink-0">
             <div className="w-8 h-8 bg-gradient-to-br from-brand-blue to-cyber-accent rounded-lg flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
               <Shield className="h-5 w-5 text-white" />
             </div>
@@ -71,19 +81,19 @@ const NavBar = () => {
           </Link>
 
           {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center space-x-1">
+          <div className="hidden lg:flex items-center justify-center flex-1 max-w-4xl mx-8">
             <NavigationMenu>
-              <NavigationMenuList>
+              <NavigationMenuList className="flex-wrap justify-center gap-1">
                 {navigationItems.map((item) => {
                   const IconComponent = item.icon;
                   return (
-                    <NavigationMenuItem key={item.title}>
+                    <NavigationMenuItem key={item.title} className="flex-shrink-0">
                       {item.title === "Services" ? (
                         <>
                           <NavigationMenuTrigger 
                             className={cn(
                               navigationMenuTriggerStyle(),
-                              "bg-transparent hover:bg-accent/50 data-[state=open]:bg-accent/50",
+                              "bg-transparent hover:bg-accent/50 data-[state=open]:bg-accent/50 whitespace-nowrap",
                               isActivePath(item.href) && "bg-accent/50 text-brand-blue"
                             )}
                           >
@@ -143,7 +153,7 @@ const NavBar = () => {
                             to={item.href}
                             className={cn(
                               navigationMenuTriggerStyle(),
-                              "bg-transparent hover:bg-accent/50 flex items-center space-x-2",
+                              "bg-transparent hover:bg-accent/50 flex items-center space-x-2 whitespace-nowrap",
                               isActivePath(item.href) && "bg-accent/50 text-brand-blue"
                             )}
                           >
@@ -157,22 +167,28 @@ const NavBar = () => {
                 })}
               </NavigationMenuList>
             </NavigationMenu>
+          </div>
 
-            <Button asChild variant="flashy" size="sm" className="ml-4">
-              <Link to="/contact">Get Started</Link>
+          {/* CTA Button - Desktop */}
+          <div className="hidden lg:flex items-center flex-shrink-0">
+            <Button asChild variant="flashy" size="sm" className="ml-4 hover:scale-105 transition-transform duration-300">
+              <Link to="/contact">
+                <Zap className="h-4 w-4 mr-2" />
+                Get Started
+              </Link>
             </Button>
           </div>
 
           {/* Mobile Navigation */}
-          <div className="flex md:hidden">
+          <div className="flex lg:hidden">
             <Sheet open={isOpen} onOpenChange={setIsOpen}>
               <SheetTrigger asChild>
-                <Button variant="ghost" size="icon">
+                <Button variant="ghost" size="icon" className="hover:bg-accent/50 hover:scale-105 transition-all duration-300">
                   {isOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
                 </Button>
               </SheetTrigger>
-              <SheetContent side="right" className="w-[300px] sm:w-[400px]">
-                <div className="flex flex-col space-y-4 mt-8">
+              <SheetContent side="right" className="w-[85vw] sm:w-[350px] overflow-y-auto">
+                <div className="flex flex-col space-y-3 mt-8">
                   {navigationItems.map((item) => {
                     const IconComponent = item.icon;
                     return (
@@ -181,7 +197,7 @@ const NavBar = () => {
                         to={item.href}
                         onClick={() => setIsOpen(false)}
                         className={cn(
-                          "flex items-center space-x-3 px-4 py-3 rounded-lg text-lg font-medium transition-all duration-200",
+                          "flex items-center space-x-3 px-4 py-3 rounded-lg text-base font-medium transition-all duration-200",
                           isActivePath(item.href)
                             ? "bg-gradient-to-r from-brand-blue/10 to-cyber-accent/10 text-brand-blue border-l-4 border-brand-blue"
                             : "text-muted-foreground hover:text-foreground hover:bg-accent/50"
@@ -193,8 +209,11 @@ const NavBar = () => {
                     );
                   })}
                   <div className="pt-4 border-t border-border">
-                    <Button asChild variant="flashy" className="w-full" onClick={() => setIsOpen(false)}>
-                      <Link to="/contact">Get Started</Link>
+                    <Button asChild variant="flashy" className="w-full hover:scale-105 transition-transform duration-300" onClick={() => setIsOpen(false)}>
+                      <Link to="/contact" className="flex items-center justify-center">
+                        <Zap className="h-4 w-4 mr-2" />
+                        Get Started
+                      </Link>
                     </Button>
                   </div>
                 </div>

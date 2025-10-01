@@ -18,13 +18,14 @@ import {
   Phone
 } from 'lucide-react';
 
-// Import images directly
 import mukukaImage from './imges/mukuka.jpeg';
 import emmanuelImage from './imges/emmanuel.jpg';
 import francisImage from './imges/francis.jpeg';
 import amosImage from './imges/amos.jpeg';
 import charityImage from './imges/charity.jpeg';
 import paulImage from './imges/paul.jpeg'; 
+import malamaImage from './imges/malama.jpeg';
+import kondwaniImage from './imges/kondwani.jpeg';
 import placeholderImage from './imges/placeholder-avatar.jpg';
 
 const MeetTheTeam = () => {
@@ -104,6 +105,28 @@ const MeetTheTeam = () => {
       social: {
         email: '',
         phone: '',
+      }
+    },
+    {
+      name: 'Malama David',
+      role: 'Meeting schedular ',
+      image: malamaImage,
+      bio: 'I decide the meeting schedules and keep track of them',
+      expertise: ['Organisation', 'Communication', 'Time management'],
+      social: {
+        email: 'davidmalam548@gmail.com',
+        phone: '0762432406',
+      }
+    },
+    {
+      name:'Kondwani mumba ',
+      role:'stakeholder engagement',
+      image: kondwaniImage,
+      bio:'stakeholder engagement and public relations',
+      expertise:['stakeholder engagement','public relations','communication'],
+      social:{
+        email:'mumbakondwani000@gmail.com',
+        phone:'0762102403'
       }
     }
   ];

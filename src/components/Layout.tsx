@@ -1,8 +1,8 @@
-// Fixed Layout.tsx - Standardized paths
+// Fixed Layout.tsx - Improved spacing and responsiveness
 import { ReactNode } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
-import { Shield, Menu, X, Users, Zap, Heart, BookOpen, Target, Mail } from 'lucide-react';
+import { Shield, Menu, X, Users, Zap, Heart, BookOpen, Target, Mail, FileText, Calendar } from 'lucide-react';
 import { useState } from 'react';
 import logo from '@/assets/logo.png';
 
@@ -21,6 +21,8 @@ const Layout = ({ children }: LayoutProps) => {
     { name: 'Our Approach', href: '/approach', icon: Target },
     { name: 'Team', href: '/team', icon: Users },
     { name: 'Contact', href: '/contact', icon: Mail },
+    { name: 'Assigned Work', href: '/AssignedWork', icon: FileText },
+    { name: 'Meeting Register', href: '/Register', icon: Calendar },
   ];
 
   const isActive = (href: string) => location.pathname === href;
@@ -32,7 +34,7 @@ const Layout = ({ children }: LayoutProps) => {
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="flex h-16 items-center justify-between">
             {/* Enhanced Logo */}
-            <Link to="/" className="flex items-center space-x-3 group">
+            <Link to="/" className="flex items-center space-x-3 group flex-shrink-0 mr-4">
               <div className="relative">
                 <div className="absolute inset-0 bg-gradient-to-br from-brand-blue to-cyber-accent rounded-lg blur-md opacity-75 group-hover:opacity-100 transition-opacity duration-300" />
                 <img 
@@ -49,32 +51,36 @@ const Layout = ({ children }: LayoutProps) => {
               </div>
             </Link>
 
-            {/* Enhanced Desktop Navigation */}
-            <div className="hidden md:flex items-center space-x-1">
-              {navigation.map((item) => {
-                const IconComponent = item.icon;
-                return (
-                  <Link
-                    key={item.name}
-                    to={item.href}
-                    className={`flex items-center space-x-2 px-4 py-2 rounded-lg text-sm font-medium transition-all duration-300 ${
-                      isActive(item.href)
-                        ? 'bg-gradient-to-r from-brand-blue to-cyber-accent text-white shadow-glow scale-105'
-                        : 'text-muted-foreground hover:text-foreground hover:bg-accent/50 hover:scale-105 hover:shadow-cyber'
-                    }`}
-                  >
-                    <IconComponent className={`h-4 w-4 ${isActive(item.href) ? 'text-white' : ''}`} />
-                    <span>{item.name}</span>
-                  </Link>
-                );
-              })}
-              
-              {/* CTA Button */}
+            {/* Enhanced Desktop Navigation - Improved spacing */}
+            <div className="hidden lg:flex items-center justify-center flex-1 max-w-4xl mx-8">
+              <div className="flex items-center flex-wrap gap-1 justify-center">
+                {navigation.map((item) => {
+                  const IconComponent = item.icon;
+                  return (
+                    <Link
+                      key={item.name}
+                      to={item.href}
+                      className={`flex items-center space-x-2 px-3 py-2 rounded-lg text-sm font-medium transition-all duration-300 whitespace-nowrap flex-shrink-0 ${
+                        isActive(item.href)
+                          ? 'bg-gradient-to-r from-brand-blue to-cyber-accent text-white shadow-glow scale-105'
+                          : 'text-muted-foreground hover:text-foreground hover:bg-accent/50 hover:scale-105 hover:shadow-cyber'
+                      }`}
+                    >
+                      <IconComponent className={`h-4 w-4 ${isActive(item.href) ? 'text-white' : ''}`} />
+                      <span>{item.name}</span>
+                    </Link>
+                  );
+                })}
+              </div>
+            </div>
+
+            {/* CTA Button - Desktop */}
+            <div className="hidden lg:flex items-center flex-shrink-0">
               <Button 
                 asChild 
                 variant="flashy" 
                 size="sm" 
-                className="ml-4 hover:scale-105 transition-transform duration-300"
+                className="ml-4 hover:scale-105 transition-transform duration-300 whitespace-nowrap"
               >
                 <Link to="/contact">
                   <Zap className="h-4 w-4 mr-2" />
@@ -84,7 +90,7 @@ const Layout = ({ children }: LayoutProps) => {
             </div>
 
             {/* Enhanced Mobile menu button */}
-            <div className="flex md:hidden items-center space-x-2">
+            <div className="flex lg:hidden items-center space-x-2">
               <Button
                 variant="ghost"
                 size="sm"
@@ -104,7 +110,7 @@ const Layout = ({ children }: LayoutProps) => {
 
         {/* Enhanced Mobile Navigation */}
         {isMenuOpen && (
-          <div className="md:hidden animate-in fade-in-50 slide-in-from-top-5 duration-300">
+          <div className="lg:hidden animate-in fade-in-50 slide-in-from-top-5 duration-300">
             <div className="px-4 pt-2 pb-4 space-y-2 bg-background/95 backdrop-blur-xl border-t border-border/60">
               {navigation.map((item) => {
                 const IconComponent = item.icon;
@@ -146,9 +152,11 @@ const Layout = ({ children }: LayoutProps) => {
 
       {/* Main content with enhanced spacing */}
       <main className="relative">
-        {/* Subtle background pattern - simplified to avoid syntax errors */}
+        {/* Subtle background pattern */}
         <div className="absolute inset-0 -z-10 bg-[radial-gradient(circle_at_1px_1px,rgba(59,130,246,0.1)_1px,transparent_0)] bg-[length:32px_32px]" />
-        {children}
+        <div className="pt-16"> {/* Added padding to account for fixed navbar */}
+          {children}
+        </div>
       </main>
 
       {/* Enhanced Footer */}
@@ -177,17 +185,17 @@ const Layout = ({ children }: LayoutProps) => {
             </div>
 
             {/* Mission Statement */}
-            <p className="text-blue-100 font-medium text-lg mb-4 max-w-2xl mx-auto leading-relaxed">
+            <p className="text-blue-100 font-medium text-lg mb-6 max-w-2xl mx-auto leading-relaxed">
               Making cybersecurity simple, accessible, and impactful for everyone.
             </p>
 
-            {/* Quick Links */}
-            <div className="flex flex-wrap justify-center gap-6 mb-6">
+            {/* Quick Links - Improved spacing */}
+            <div className="flex flex-wrap justify-center gap-4 sm:gap-6 mb-8">
               {navigation.map((item) => (
                 <Link
                   key={item.name}
                   to={item.href}
-                  className="text-blue-100 hover:text-white transition-colors duration-300 text-sm font-medium hover:scale-105 transform"
+                  className="text-blue-100 hover:text-white transition-colors duration-300 text-sm font-medium hover:scale-105 transform px-2 py-1"
                 >
                   {item.name}
                 </Link>
@@ -195,7 +203,7 @@ const Layout = ({ children }: LayoutProps) => {
             </div>
 
             {/* Contact Info */}
-            <div className="flex flex-col sm:flex-row justify-center items-center gap-6 text-blue-100 text-sm mb-6">
+            <div className="flex flex-col sm:flex-row justify-center items-center gap-4 sm:gap-6 text-blue-100 text-sm mb-8">
               <div className="flex items-center space-x-2">
                 <Mail className="h-4 w-4" />
                 <span>info@group7cybered.com</span>
