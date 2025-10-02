@@ -1,6 +1,6 @@
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
-import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { 
   BookOpen, 
   Users, 
@@ -14,6 +14,16 @@ import {
 } from 'lucide-react';
 
 const Approach = () => {
+  const navigate = useNavigate();
+
+  const handleViewPrograms = () => {
+    navigate('/services');
+  };
+
+  const handleContactUs = () => {
+    navigate('/contact');
+  };
+
   const methodologies = [
     {
       icon: BookOpen,
@@ -240,14 +250,22 @@ const Approach = () => {
             Ready to see how our unique teaching methodology can benefit your cybersecurity education goals?
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button asChild size="lg" variant="secondary" className="bg-white text-brand-blue-dark hover:bg-blue-50">
-              <Link to="/services">
-                View Our Programs
-                <ArrowRight className="ml-2 h-5 w-5" />
-              </Link>
+            <Button 
+              onClick={handleViewPrograms}
+              size="lg" 
+              variant="secondary" 
+              className="bg-white text-brand-blue-dark hover:bg-blue-50"
+            >
+              View Our Programs
+              <ArrowRight className="ml-2 h-5 w-5" />
             </Button>
-            <Button asChild size="lg" variant="outline" className="border-white/20 text-white hover:bg-white/10">
-              <Link to="/contact">Contact Us</Link>
+            <Button 
+              onClick={handleContactUs}
+              size="lg" 
+              variant="outline" 
+              className="border-white/20 text-white hover:bg-white/10"
+            >
+              Contact Us
             </Button>
           </div>
         </div>

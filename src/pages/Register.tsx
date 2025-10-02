@@ -9,12 +9,10 @@ import {
   Users, 
   MapPin, 
   FileText,
-  Camera,
   ChevronLeft,
   ChevronRight,
   Play,
   Pause,
-  Sparkles,
   ArrowRight
 } from 'lucide-react';
 
@@ -22,42 +20,57 @@ const Register = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
   const [isPlaying, setIsPlaying] = useState(true);
 
+  const handleAddToCalendar = () => {
+    // Create Google Calendar URL for the next meeting
+    const event = {
+      title: 'Group 7 Cyber Ed Inc. - Team Meeting',
+      details: 'Review project progress, discuss workshop preparations, and plan for upcoming partnerships.',
+      location: 'Virtual Meeting',
+      start: '20241112T150000',
+      end: '20241112T160000'
+    };
+
+    const googleCalendarUrl = `https://calendar.google.com/calendar/render?action=TEMPLATE&dates=${event.start}%2F${event.end}&text=${encodeURIComponent(event.title)}&details=${encodeURIComponent(event.details)}&location=${encodeURIComponent(event.location)}`;
+    
+    window.open(googleCalendarUrl, '_blank');
+  };
+
   const meetings = [
     {
       id: 1,
-      date: '2024-10-15',
-      time: '14:00',
+      date: '2025-10-01',
+      time: '20:00',
       location: 'Virtual Meeting',
-      attendees: ['Emmanuel Kasuba', 'Francis Mwamba', 'Amos Zulu', 'Charity Kunda', 'Paul Kashiba'],
-      agenda: 'Project kickoff and role assignments',
-      minutes: 'Discussed project timeline, assigned initial tasks, and set up communication channels.'
+      attendees: ['All members online At the time'],
+      agenda: 'Progress report on flash Cards',
+      minutes: 'Flash Cards are posted by francis'
     },
     {
       id: 2,
-      date: '2024-10-22',
-      time: '15:30',
-      location: 'Campus Library',
+      date: 'First meeting',
+      time: 'Unknown',
+      location: 'Whatsapp Group interaction ',
       attendees: ['All Team Members'],
-      agenda: 'Curriculum development brainstorming',
-      minutes: 'Brainstormed curriculum structure, identified key cybersecurity topics for beginners.'
+      agenda: 'Unclear',
+      minutes: 'Emmanuel kasuba was assigned as group leader'
     },
     {
       id: 3,
-      date: '2024-10-29',
+      date: '2025-09-30',
       time: '16:00',
       location: 'Virtual Meeting',
-      attendees: ['Emmanuel Kasuba', 'Francis Mwamba', 'Jessica Sumaili'],
+      attendees: ['Emmanuel Kasuba', 'Francis Mwamba',],
       agenda: 'Website development progress review',
       minutes: 'Reviewed website prototype, discussed UI improvements and content strategy.'
     },
     {
       id: 4,
-      date: '2024-11-05',
+      date: '2025-09-19',
       time: '14:00',
-      location: 'Student Center',
+      location: 'Pillars(school cement banches)',
       attendees: ['All Team Members'],
-      agenda: 'Workshop material preparation',
-      minutes: 'Finalized workshop exercises, assigned material creation tasks.'
+      agenda: 'first meeting',
+      minutes: 'Identifiying group members and giving roles'
     }
   ];
 
@@ -76,21 +89,21 @@ const Register = () => {
     },
     {
       id: 3,
-      src: '/images/meetings/meeting-3.jpg',
-      caption: 'Team Collaboration at Campus Library',
-      date: '2024-10-22'
+      src: '/images/meetings/meeting-3.jpeg',
+      caption: 'Team Collaboration at outside main Hall',
+      date: '2025-09-23'
     },
     {
       id: 4,
       src: '/images/meetings/meeting-4.jpg',
-      caption: 'Website Development Discussion',
-      date: '2024-10-29'
+      caption: 'Website Development Discussion in the Main hall',
+      date: '2024-09-29'
     },
     {
       id: 5,
       src: '/images/meetings/meeting-5.jpg',
-      caption: 'Workshop Material Planning',
-      date: '2024-11-05'
+      caption: 'Finalisation of all work and assignments',
+      date: '2025-10-02'
     }
   ];
 
@@ -164,9 +177,6 @@ const Register = () => {
                         src={photo.src}
                         alt={photo.caption}
                         className="w-full h-full object-cover"
-                        onError={(e) => {
-                          e.currentTarget.src = '/images/placeholder-meeting.jpg';
-                        }}
                       />
                       <div className="absolute inset-0 bg-black/40 flex items-end">
                         <div className="p-6 text-white">
@@ -238,7 +248,7 @@ const Register = () => {
                       <div className="flex flex-wrap gap-4 text-sm text-muted-foreground">
                         <div className="flex items-center gap-1">
                           <Calendar className="h-4 w-4" />
-                          {new Date(meeting.date).toLocaleDateString()}
+                          {meeting.date}
                         </div>
                         <div className="flex items-center gap-1">
                           <Clock className="h-4 w-4" />
@@ -318,11 +328,12 @@ const Register = () => {
               <p className="text-muted-foreground mb-6">
                 Agenda: Review project progress, discuss workshop preparations, and plan for upcoming partnerships.
               </p>
-              <Button asChild variant="flashy">
-                <a href="#">
-                  Add to Calendar
-                  <ArrowRight className="ml-2 h-4 w-4" />
-                </a>
+              <Button 
+                onClick={handleAddToCalendar}
+                variant="flashy"
+              >
+                Add to Calendar
+                <ArrowRight className="ml-2 h-4 w-4" />
               </Button>
             </CardContent>
           </Card>

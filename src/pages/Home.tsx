@@ -1,10 +1,28 @@
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
-import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { Shield, Users, BookOpen, Target, ArrowRight, Lock, Globe, Zap } from 'lucide-react';
 import logo from '@/assets/logo.png';
 
 const Home = () => {
+  const navigate = useNavigate();
+
+  const handleExplorePrograms = () => {
+    navigate('/services');
+  };
+
+  const handleGetStarted = () => {
+    navigate('/contact');
+  };
+
+  const handleLearnMore = () => {
+    navigate('/about');
+  };
+
+  const handleViewAllPrograms = () => {
+    navigate('/services');
+  };
+
   return (
     <div className="flex flex-col">
       {/* Hero Section */}
@@ -24,14 +42,21 @@ const Home = () => {
                 </p>
               </div>
               <div className="flex flex-col sm:flex-row gap-4">
-                <Button asChild size="lg" variant="flashy">
-                  <Link to="/services">
-                    Explore Our Programs
-                    <ArrowRight className="ml-2 h-5 w-5" />
-                  </Link>
+                <Button 
+                  onClick={handleExplorePrograms}
+                  size="lg" 
+                  variant="flashy"
+                >
+                  Explore Our Programs
+                  <ArrowRight className="ml-2 h-5 w-5" />
                 </Button>
-                <Button asChild size="lg" variant="outline" className="border-2 border-brand-yellow text-brand-yellow hover:bg-brand-yellow hover:text-brand-blue-dark">
-                  <Link to="/contact">Get Started</Link>
+                <Button 
+                  onClick={handleGetStarted}
+                  size="lg" 
+                  variant="outline" 
+                  className="border-2 border-brand-yellow text-brand-yellow hover:bg-brand-yellow hover:text-brand-blue-dark"
+                >
+                  Get Started
                 </Button>
               </div>
             </div>
@@ -162,11 +187,13 @@ const Home = () => {
           </div>
 
           <div className="text-center mt-12">
-            <Button asChild size="lg" variant="flashy">
-              <Link to="/services">
-                View All Programs
-                <ArrowRight className="ml-2 h-5 w-5" />
-              </Link>
+            <Button 
+              onClick={handleViewAllPrograms}
+              size="lg" 
+              variant="flashy"
+            >
+              View All Programs
+              <ArrowRight className="ml-2 h-5 w-5" />
             </Button>
           </div>
         </div>
@@ -184,8 +211,12 @@ const Home = () => {
             </p>
           </div>
           <div className="mt-8">
-            <Button asChild size="lg" variant="outline">
-              <Link to="/about">Learn More About Us</Link>
+            <Button 
+              onClick={handleLearnMore}
+              size="lg" 
+              variant="outline"
+            >
+              Learn More About Us
             </Button>
           </div>
         </div>

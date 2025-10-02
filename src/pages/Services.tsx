@@ -1,10 +1,20 @@
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
-import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { Zap, Lock, Users, BookOpen, Target, CheckCircle, ArrowRight } from 'lucide-react';
 
 const Services = () => {
+  const navigate = useNavigate();
+
+  const handleGetInTouch = () => {
+    navigate('/contact');
+  };
+
+  const handleLearnOurApproach = () => {
+    navigate('/approach');
+  };
+
   const services = [
     {
       icon: Zap,
@@ -190,14 +200,22 @@ const Services = () => {
             Contact us to discuss how we can customize our programs to meet your specific needs and goals.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button asChild size="lg" variant="secondary" className="bg-white text-brand-blue-dark hover:bg-blue-50">
-              <Link to="/contact">
-                Get In Touch
-                <ArrowRight className="ml-2 h-5 w-5" />
-              </Link>
+            <Button 
+              onClick={handleGetInTouch}
+              size="lg" 
+              variant="secondary" 
+              className="bg-white text-brand-blue-dark hover:bg-blue-50"
+            >
+              Get In Touch
+              <ArrowRight className="ml-2 h-5 w-5" />
             </Button>
-            <Button asChild size="lg" variant="outline" className="border-white/20 text-white hover:bg-white/10">
-              <Link to="/approach">Learn Our Approach</Link>
+            <Button 
+              onClick={handleLearnOurApproach}
+              size="lg" 
+              variant="outline" 
+              className="border-white/20 text-white hover:bg-white/10"
+            >
+              Learn Our Approach
             </Button>
           </div>
         </div>

@@ -1,8 +1,5 @@
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
-import { Input } from '@/components/ui/input';
-import { Textarea } from '@/components/ui/textarea';
-import { Label } from '@/components/ui/label';
 import { 
   Mail, 
   Phone, 
@@ -11,36 +8,46 @@ import {
   Users, 
   GraduationCap, 
   Building, 
-  Heart,
-  Send,
-  MessageSquare
+  Heart
 } from 'lucide-react';
 
 const Contact = () => {
+  const handleEmailUs = () => {
+    window.location.href = 'mailto:kasubaemmanuel@gmail.com?subject=Inquiry About Group 7 Cyber Ed Inc.&body=Hello, I would like to learn more about your programs and partnership opportunities.';
+  };
+
+  const handleScheduleCall = () => {
+    window.location.href = 'tel:+260972354969';
+  };
+
   const contactInfo = [
     {
       icon: Mail,
       title: 'Email Us',
       description: 'Send us a message and we\'ll respond within 24 hours',
-      details: 'kasubaemmanuel@gmail.com'
+      details: 'kasubaemmanuel@gmail.com',
+      action: handleEmailUs
     },
     {
       icon: Phone,
       title: 'Call Us',
       description: 'Speak directly with our education specialists',
-      details: '+260 972 354 969'
+      details: '+260 972 354 969',
+      action: handleScheduleCall
     },
     {
       icon: MapPin,
       title: 'Visit Us',
       description: 'Schedule an in-person meeting at our office',
-      details: 'zut campus in ndola'
+      details: 'zut campus in ndola',
+      action: null
     },
     {
       icon: Clock,
       title: 'Office Hours',
       description: 'We\'re available to help during business hours',
-      details: 'Mon,wed,tue: every after the last class of these days'
+      details: 'Mon,wed,tue: every after the last class of these days',
+      action: null
     }
   ];
 
@@ -91,7 +98,11 @@ const Contact = () => {
             {contactInfo.map((info) => {
               const IconComponent = info.icon;
               return (
-                <Card key={info.title} className="border-0 shadow-card hover:shadow-cyber transition-all duration-300 bg-gradient-card group text-center">
+                <Card 
+                  key={info.title} 
+                  className="border-0 shadow-card hover:shadow-cyber transition-all duration-300 bg-gradient-card group text-center cursor-pointer"
+                  onClick={info.action || undefined}
+                >
                   <CardHeader>
                     <div className="w-12 h-12 bg-gradient-to-br from-brand-blue to-cyber-accent rounded-lg flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform duration-300">
                       <IconComponent className="h-6 w-6 text-white" />
@@ -111,103 +122,40 @@ const Contact = () => {
         </div>
       </section>
 
-      {/* Contact Form & Partnership Types */}
+      {/* Partnership Types */}
       <section className="py-20 bg-muted/30">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="grid lg:grid-cols-2 gap-12">
-            {/* Contact Form */}
-            <Card className="border-0 shadow-card bg-background">
-              <CardHeader>
-                <div className="flex items-center space-x-3 mb-4">
-                  <div className="w-12 h-12 bg-gradient-to-br from-brand-blue to-cyber-accent rounded-lg flex items-center justify-center">
-                    <MessageSquare className="h-6 w-6 text-white" />
-                  </div>
-                  <div>
-                    <CardTitle className="text-2xl">Get In Touch</CardTitle>
-                    <CardDescription>
-                      Tell us about your cybersecurity education needs
-                    </CardDescription>
-                  </div>
-                </div>
-              </CardHeader>
-              <CardContent className="space-y-6">
-                <div className="grid md:grid-cols-2 gap-4">
-                  <div className="space-y-2">
-                    <Label htmlFor="firstName">First Name</Label>
-                    <Input id="firstName" placeholder="Your first name" />
-                  </div>
-                  <div className="space-y-2">
-                    <Label htmlFor="lastName">Last Name</Label>
-                    <Input id="lastName" placeholder="Your last name" />
-                  </div>
-                </div>
-                
-                <div className="space-y-2">
-                  <Label htmlFor="email">Email</Label>
-                  <Input id="email" type="email" placeholder="your.email@example.com" />
-                </div>
-                
-                <div className="space-y-2">
-                  <Label htmlFor="organization">Organization (Optional)</Label>
-                  <Input id="organization" placeholder="School, company, or organization name" />
-                </div>
-                
-                <div className="space-y-2">
-                  <Label htmlFor="subject">Subject</Label>
-                  <Input id="subject" placeholder="What would you like to discuss?" />
-                </div>
-                
-                <div className="space-y-2">
-                  <Label htmlFor="message">Message</Label>
-                  <Textarea 
-                    id="message" 
-                    placeholder="Tell us about your cybersecurity education goals, the audience you serve, and how we might collaborate..."
-                    className="min-h-[120px]"
-                  />
-                </div>
-                
-                <Button className="w-full bg-gradient-to-r from-brand-blue to-cyber-accent text-white hover:shadow-cyber">
-                  Send Message
-                  <Send className="ml-2 h-4 w-4" />
-                </Button>
-              </CardContent>
-            </Card>
+          <div className="text-center mb-12">
+            <h2 className="text-3xl font-bold text-foreground mb-4">Partnership Opportunities</h2>
+            <p className="text-lg text-muted-foreground max-w-3xl mx-auto leading-relaxed">
+              Whether it's a curriculum add-on, a public workshop, or a mentorship program, 
+              Group 7 Cyber Ed Inc. is ready to collaborate with diverse organizations.
+            </p>
+          </div>
 
-            {/* Partnership Types */}
-            <div className="space-y-8">
-              <div>
-                <h2 className="text-3xl font-bold text-foreground mb-4">Partnership Opportunities</h2>
-                <p className="text-lg text-muted-foreground leading-relaxed">
-                  Whether it's a curriculum add-on, a public workshop, or a mentorship program, 
-                  Group 7 Cyber Ed Inc. is ready to collaborate with diverse organizations.
-                </p>
-              </div>
-
-              <div className="space-y-6">
-                {partnerships.map((partnership) => {
-                  const IconComponent = partnership.icon;
-                  return (
-                    <Card key={partnership.title} className="border-0 shadow-card bg-gradient-card">
-                      <CardContent className="p-6">
-                        <div className="flex items-start space-x-4">
-                          <div className="w-12 h-12 bg-gradient-to-br from-brand-blue to-cyber-accent rounded-lg flex items-center justify-center flex-shrink-0">
-                            <IconComponent className="h-6 w-6 text-white" />
-                          </div>
-                          <div>
-                            <h3 className="font-semibold text-lg text-foreground mb-2">
-                              {partnership.title}
-                            </h3>
-                            <p className="text-muted-foreground">
-                              {partnership.description}
-                            </p>
-                          </div>
-                        </div>
-                      </CardContent>
-                    </Card>
-                  );
-                })}
-              </div>
-            </div>
+          <div className="grid md:grid-cols-2 gap-6">
+            {partnerships.map((partnership) => {
+              const IconComponent = partnership.icon;
+              return (
+                <Card key={partnership.title} className="border-0 shadow-card bg-gradient-card hover:shadow-cyber transition-all duration-300">
+                  <CardContent className="p-6">
+                    <div className="flex items-start space-x-4">
+                      <div className="w-12 h-12 bg-gradient-to-br from-brand-blue to-cyber-accent rounded-lg flex items-center justify-center flex-shrink-0">
+                        <IconComponent className="h-6 w-6 text-white" />
+                      </div>
+                      <div>
+                        <h3 className="font-semibold text-lg text-foreground mb-2">
+                          {partnership.title}
+                        </h3>
+                        <p className="text-muted-foreground">
+                          {partnership.description}
+                        </p>
+                      </div>
+                    </div>
+                  </CardContent>
+                </Card>
+              );
+            })}
           </div>
         </div>
       </section>
@@ -274,11 +222,21 @@ const Contact = () => {
             program that meets your organization's unique needs and goals.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button size="lg" variant="secondary" className="bg-white text-brand-blue-dark hover:bg-blue-50">
+            <Button 
+              onClick={handleEmailUs}
+              size="lg" 
+              variant="secondary" 
+              className="bg-white text-brand-blue-dark hover:bg-blue-50"
+            >
               <Mail className="mr-2 h-5 w-5" />
               Email Us Now
             </Button>
-            <Button size="lg" variant="outline" className="border-white/20 text-white hover:bg-white/10">
+            <Button 
+              onClick={handleScheduleCall}
+              size="lg" 
+              variant="outline" 
+              className="border-white/20 text-white hover:bg-white/10"
+            >
               <Phone className="mr-2 h-5 w-5" />
               Schedule a Call
             </Button>

@@ -1,7 +1,7 @@
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
-import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { 
   Users, 
   Target, 
@@ -18,6 +18,7 @@ import {
   Phone
 } from 'lucide-react';
 
+// Import team member images with correct syntax
 import mukukaImage from './imges/mukuka.jpeg';
 import emmanuelImage from './imges/emmanuel.jpg';
 import francisImage from './imges/francis.jpeg';
@@ -26,20 +27,28 @@ import charityImage from './imges/charity.jpeg';
 import paulImage from './imges/paul.jpeg'; 
 import malamaImage from './imges/malama.jpeg';
 import kondwaniImage from './imges/kondwani.jpeg';
+import jessicaImage from './imges/jessica.jpeg';
+import donaldImage from './imges/donald.jpeg';
 import placeholderImage from './imges/placeholder-avatar.jpg';
 
 const MeetTheTeam = () => {
+  const navigate = useNavigate();
+
+  const handleExploreOpportunities = () => {
+    navigate('/contact');
+  };
+
+  const handleSendCV = () => {
+    window.location.href = 'mailto:kasubaemmanuel@gmail.com?subject=CV Submission - Group 7 Cyber Ed Inc.&body=Hello, I would like to submit my CV for consideration. Attached is my resume.';
+  };
+
+  const handleContactTeamMember = (email: string, name: string) => {
+    if (email) {
+      window.location.href = `mailto:${email}?subject=Inquiry for ${name}&body=Hello ${name}, I would like to get in touch with you regarding...`;
+    }
+  };
+
   const teamMembers = [
-    {
-      name: 'Sam Mukuka',
-      role: 'Founder',
-      image: mukukaImage,
-      bio:'Lecturer and the Person who brought the group members Together',
-      expertise: ['Mentoring', 'Support', 'Full Stack dev'],
-      social: {
-        linkedin: 'https://www.linkedin.com/in/sam-kasele-mukuka-85728b34',
-      }
-    },
     {
       name: 'Emmanuel Kasuba',
       role: 'CEO & Group leader',
@@ -93,23 +102,23 @@ const MeetTheTeam = () => {
       expertise: ['Organisation', 'Communication', 'Time management'],
       social: {
         linkedin: 'https://www.linkedin.com/in/paul-kashiba-5b2b99210',
-        email: '',
+        email: 'paul@example.com',
       }
     },
     {
       name: 'Jessica Sumaili',
       role: 'Company Online Voice',
-      image: placeholderImage,
+      image: jessicaImage,
       bio: 'Social media manager and content creator. Passionate about digital ethics and privacy advocacy.',
       expertise: ['Influencer/Content Creator', 'Ethics', 'Communication'],
       social: {
-        email: '',
-        phone: '',
+        email: 'jessicasumaili213@gmail.com',
+        phone: '0764372062',
       }
     },
     {
       name: 'Malama David',
-      role: 'Meeting schedular ',
+      role: 'Meeting Scheduler',
       image: malamaImage,
       bio: 'I decide the meeting schedules and keep track of them',
       expertise: ['Organisation', 'Communication', 'Time management'],
@@ -119,16 +128,27 @@ const MeetTheTeam = () => {
       }
     },
     {
-      name:'Kondwani mumba ',
-      role:'stakeholder engagement',
+      name:'Kondwani Mumba',
+      role:'Peer Educator',
       image: kondwaniImage,
-      bio:'stakeholder engagement and public relations',
+      bio:'I am passionate about educating different individuals on the importance of cybersecurity and how to protect themselves online.',
       expertise:['stakeholder engagement','public relations','communication'],
       social:{
         email:'mumbakondwani000@gmail.com',
         phone:'0762102403'
       }
-    }
+    }, 
+    {
+      name: 'Donald Chanda',
+      role: 'Peer Educator',
+      image: donaldImage,
+      bio: 'I am passionate about educating my peers on the importance of cybersecurity and how to protect themselves online.',
+      expertise: ['Technical Troubleshooting', 'Customer Support', 'IT Solutions'],
+      social: {
+        email: 'kaomadonald0@gmail.com',
+        phone: '+260 777350433',
+      }
+    },
   ];
 
   const values = [
@@ -155,12 +175,12 @@ const MeetTheTeam = () => {
   ];
 
   // Function to handle social media clicks
-  const handleSocialClick = (type: string, value: string) => {
+  const handleSocialClick = (type: string, value: string, memberName: string) => {
     if (!value) return;
     
     switch (type) {
       case 'email':
-        window.location.href = `mailto:${value}`;
+        window.location.href = `mailto:${value}?subject=Inquiry for ${memberName}&body=Hello ${memberName}, I would like to get in touch with you regarding...`;
         break;
       case 'linkedin':
         window.open(value, '_blank');
@@ -213,7 +233,8 @@ const MeetTheTeam = () => {
             {teamMembers.map((member) => (
               <Card 
                 key={member.name} 
-                className="border-0 shadow-card bg-gradient-card hover:shadow-cyber transition-all duration-500 group hover:scale-105"
+                className="border-0 shadow-card bg-gradient-card hover:shadow-cyber transition-all duration-500 group hover:scale-105 cursor-pointer"
+                onClick={() => handleContactTeamMember(member.social.email, member.name)}
               >
                 <CardHeader className="pb-4">
                   <div className="relative">
@@ -222,6 +243,11 @@ const MeetTheTeam = () => {
                       src={member.image}
                       alt={member.name}
                       className="relative w-32 h-32 rounded-full mx-auto mb-4 border-4 border-white shadow-lg group-hover:border-brand-blue/20 transition-colors duration-300 object-cover"
+                      onError={(e) => {
+                        // Fallback to placeholder if image fails to load
+                        e.currentTarget.src = placeholderImage;
+                        e.currentTarget.onerror = null; // Prevent infinite loop
+                      }}
                     />
                   </div>
                   <CardTitle className="text-xl text-center text-foreground">{member.name}</CardTitle>
@@ -252,7 +278,10 @@ const MeetTheTeam = () => {
                         variant="ghost" 
                         size="icon" 
                         className="h-8 w-8 text-muted-foreground hover:text-brand-blue hover:bg-brand-blue/10"
-                        onClick={() => handleSocialClick('email', member.social.email)}
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          handleSocialClick('email', member.social.email, member.name);
+                        }}
                       >
                         <Mail className="h-4 w-4" />
                       </Button>
@@ -262,7 +291,10 @@ const MeetTheTeam = () => {
                         variant="ghost" 
                         size="icon" 
                         className="h-8 w-8 text-muted-foreground hover:text-brand-blue hover:bg-brand-blue/10"
-                        onClick={() => handleSocialClick('linkedin', member.social.linkedin)}
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          handleSocialClick('linkedin', member.social.linkedin, member.name);
+                        }}
                       >
                         <Linkedin className="h-4 w-4" />
                       </Button>
@@ -272,7 +304,10 @@ const MeetTheTeam = () => {
                         variant="ghost" 
                         size="icon" 
                         className="h-8 w-8 text-muted-foreground hover:text-brand-blue hover:bg-brand-blue/10"
-                        onClick={() => handleSocialClick('github', member.social.github)}
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          handleSocialClick('github', member.social.github, member.name);
+                        }}
                       >
                         <Github className="h-4 w-4" />
                       </Button>
@@ -282,7 +317,10 @@ const MeetTheTeam = () => {
                         variant="ghost" 
                         size="icon" 
                         className="h-8 w-8 text-muted-foreground hover:text-brand-blue hover:bg-brand-blue/10"
-                        onClick={() => handleSocialClick('phone', member.social.phone)}
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          handleSocialClick('phone', member.social.phone, member.name);
+                        }}
                       >
                         <Phone className="h-4 w-4" />
                       </Button>
@@ -408,14 +446,22 @@ const MeetTheTeam = () => {
             for universal cyber literacy.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button asChild size="lg" variant="secondary" className="bg-white text-brand-blue-dark hover:bg-blue-50">
-              <Link to="/contact">
-                Explore Opportunities
-                <ArrowRight className="ml-2 h-5 w-5" />
-              </Link>
+            <Button 
+              onClick={handleExploreOpportunities}
+              size="lg" 
+              variant="secondary" 
+              className="bg-white text-brand-blue-dark hover:bg-blue-50"
+            >
+              Explore Opportunities
+              <ArrowRight className="ml-2 h-5 w-5" />
             </Button>
-            <Button asChild size="lg" variant="outline" className="border-white/20 text-white hover:bg-white/10">
-              <Link to="/contact">Send Your CV</Link>
+            <Button 
+              onClick={handleSendCV}
+              size="lg" 
+              variant="outline" 
+              className="border-white/20 text-white hover:bg-white/10"
+            >
+              Send Your CV
             </Button>
           </div>
         </div>

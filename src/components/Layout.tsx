@@ -1,9 +1,8 @@
-// Fixed Layout.tsx - Improved spacing and responsiveness
-import { ReactNode } from 'react';
+// Fixed Layout.tsx - Added Cyber Safety Floating Button
+import { ReactNode, useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
-import { Shield, Menu, X, Users, Zap, Heart, BookOpen, Target, Mail, FileText, Calendar } from 'lucide-react';
-import { useState } from 'react';
+import { Shield, Menu, X, Users, Zap, Heart, BookOpen, Target, Mail, FileText, Calendar, AlertTriangle } from 'lucide-react';
 import logo from '@/assets/logo.png';
 
 interface LayoutProps {
@@ -12,6 +11,7 @@ interface LayoutProps {
 
 const Layout = ({ children }: LayoutProps) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isCyberSafeVisible, setIsCyberSafeVisible] = useState(false);
   const location = useLocation();
 
   const navigation = [
@@ -26,6 +26,24 @@ const Layout = ({ children }: LayoutProps) => {
   ];
 
   const isActive = (href: string) => location.pathname === href;
+
+  // Show cyber safe button after a short delay
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setIsCyberSafeVisible(true);
+    }, 2000);
+
+    return () => clearTimeout(timer);
+  }, []);
+
+  const handleCyberSafeClick = () => {
+    // You can customize this action - for example, show a modal, navigate to a page, etc.
+    window.open('/services#cyber-safety', '_blank');
+  };
+
+  const handleCloseCyberSafe = () => {
+    setIsCyberSafeVisible(false);
+  };
 
   return (
     <div className="min-h-screen bg-background">
@@ -159,6 +177,47 @@ const Layout = ({ children }: LayoutProps) => {
         </div>
       </main>
 
+      {/* Cyber Safety Floating Button */}
+      {isCyberSafeVisible && (
+        <div className="fixed bottom-6 right-6 z-50 animate-in fade-in-50 slide-in-from-bottom-5 duration-500">
+          <div className="relative group">
+            {/* Glow effect */}
+            <div className="absolute inset-0 bg-gradient-to-r from-green-500 to-emerald-400 rounded-full blur-md opacity-75 group-hover:opacity-100 transition-opacity duration-300 animate-pulse" />
+            
+            {/* Main button */}
+            <Button
+              onClick={handleCyberSafeClick}
+              className="relative bg-gradient-to-r from-green-600 to-emerald-500 hover:from-green-700 hover:to-emerald-600 text-white font-bold py-3 px-6 rounded-full shadow-2xl hover:shadow-glow transition-all duration-300 hover:scale-105 border-2 border-white/20"
+              size="lg"
+            >
+              <Shield className="h-5 w-5 mr-2" />
+              Be Cyber Safe
+            </Button>
+
+            {/* Close button */}
+            <button
+              onClick={handleCloseCyberSafe}
+              className="absolute -top-2 -right-2 bg-red-500 hover:bg-red-600 text-white rounded-full w-6 h-6 flex items-center justify-center text-xs font-bold transition-all duration-200 hover:scale-110 shadow-lg"
+              aria-label="Close cyber safety reminder"
+            >
+              ×
+            </button>
+
+            {/* Tooltip */}
+            <div className="absolute bottom-full right-0 mb-2 hidden group-hover:block animate-in fade-in-50 duration-200">
+              <div className="bg-gray-900 text-white text-sm rounded-lg py-2 px-3 shadow-xl max-w-xs border border-gray-700">
+                <div className="flex items-center gap-2 mb-1">
+                  <AlertTriangle className="h-4 w-4 text-yellow-400" />
+                  <span className="font-semibold">Stay Protected!</span>
+                </div>
+                <p className="text-gray-300">Learn essential cybersecurity tips to keep yourself safe online</p>
+                <div className="absolute top-full right-4 -mt-1 border-4 border-transparent border-t-gray-900"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
+
       {/* Enhanced Footer */}
       <footer className="relative bg-gradient-to-br from-brand-blue-dark via-brand-blue to-cyber-accent border-t-2 border-brand-yellow/40">
         {/* Simplified background pattern */}
@@ -185,17 +244,17 @@ const Layout = ({ children }: LayoutProps) => {
             </div>
 
             {/* Mission Statement */}
-            <p className="text-blue-100 font-medium text-lg mb-6 max-w-2xl mx-auto leading-relaxed">
+            <p className="text-blue-100 font-medium text-lg mb-4 max-w-2xl mx-auto leading-relaxed">
               Making cybersecurity simple, accessible, and impactful for everyone.
             </p>
 
-            {/* Quick Links - Improved spacing */}
-            <div className="flex flex-wrap justify-center gap-4 sm:gap-6 mb-8">
+            {/* Quick Links */}
+            <div className="flex flex-wrap justify-center gap-6 mb-6">
               {navigation.map((item) => (
                 <Link
                   key={item.name}
                   to={item.href}
-                  className="text-blue-100 hover:text-white transition-colors duration-300 text-sm font-medium hover:scale-105 transform px-2 py-1"
+                  className="text-blue-100 hover:text-white transition-colors duration-300 text-sm font-medium hover:scale-105 transform"
                 >
                   {item.name}
                 </Link>
@@ -203,7 +262,7 @@ const Layout = ({ children }: LayoutProps) => {
             </div>
 
             {/* Contact Info */}
-            <div className="flex flex-col sm:flex-row justify-center items-center gap-4 sm:gap-6 text-blue-100 text-sm mb-8">
+            <div className="flex flex-col sm:flex-row justify-center items-center gap-6 text-blue-100 text-sm mb-6">
               <div className="flex items-center space-x-2">
                 <Mail className="h-4 w-4" />
                 <span>info@group7cybered.com</span>

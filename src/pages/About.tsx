@@ -1,9 +1,23 @@
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { Target, Globe, Users, GraduationCap, Building, Heart, ArrowRight } from 'lucide-react';
 
 const About = () => {
+  const navigate = useNavigate();
+
+  const handleExplorePrograms = () => {
+    navigate('/services');
+  };
+
+  const handleGetInTouch = () => {
+    navigate('/contact');
+  };
+
+  const handleEmailUs = () => {
+    window.location.href = 'mailto:kasubaemmanuel@gmail.com?subject=Inquiry About Group 7 Cyber Ed Inc.&body=Hello, I would like to learn more about your programs.';
+  };
+
   return (
     <div className="flex flex-col">
       {/* Hero Section */}
@@ -169,14 +183,22 @@ const About = () => {
             Whether you're an educator, student, or organization, we'd love to work with you to build a more cyber-secure future.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button asChild size="lg" variant="secondary" className="bg-white text-brand-blue-dark hover:bg-blue-50">
-              <Link to="/services">
-                Explore Our Programs
-                <ArrowRight className="ml-2 h-5 w-5" />
-              </Link>
+            <Button 
+              onClick={handleExplorePrograms}
+              size="lg" 
+              variant="secondary" 
+              className="bg-white text-brand-blue-dark hover:bg-blue-50"
+            >
+              Explore Our Programs
+              <ArrowRight className="ml-2 h-5 w-5" />
             </Button>
-            <Button asChild size="lg" variant="outline" className="border-white/20 text-white hover:bg-white/10">
-              <Link to="/contact">Get In Touch</Link>
+            <Button 
+              onClick={handleGetInTouch}
+              size="lg" 
+              variant="outline" 
+              className="border-white/20 text-white hover:bg-white/10"
+            >
+              Get In Touch
             </Button>
           </div>
         </div>

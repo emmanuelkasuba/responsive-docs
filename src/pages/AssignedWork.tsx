@@ -2,7 +2,7 @@
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
-import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { 
   Calendar, 
   Clock, 
@@ -17,53 +17,63 @@ import {
 } from 'lucide-react';
 
 const AssignedWork = () => {
+  const navigate = useNavigate();
+
+  const handleContactProjectManager = () => {
+    navigate('/contact');
+  };
+
+  const handleViewTeamMembers = () => {
+    navigate('/team');
+  };
+
   const assignments = [
     {
       id: 1,
-      title: 'Cybersecurity Curriculum Development',
-      description: 'Develop comprehensive cybersecurity curriculum for high school students focusing on digital literacy and online safety.',
-      assignedTo: ['Emmanuel Kasuba', 'Francis Mwamba'],
-      dueDate: '2024-12-15',
-      status: 'in-progress',
+      title: 'outling roles/ niches of each group member',
+      description: 'Define clear roles and responsibilities for each team member to enhance collaboration and efficiency.',
+      assignedTo: ['Emmanuel Kasuba', 'Francis Mwamba', 'jessica sumaili', 'charity mwansa kunda', 'amos zulu', 'donald kaoma', 'paul kashiba'],
+      dueDate: '2025-09-19',
+      status: 'completed',
       priority: 'high',
-      progress: 65
+      progress: 100
     },
     {
       id: 2,
-      title: 'Workshop Materials Preparation',
-      description: 'Create hands-on workshop materials for the Cyber Literacy Bootcamp including lab exercises and case studies.',
-      assignedTo: ['Amos Zulu', 'Charity Mwansa Kunda'],
-      dueDate: '2024-11-30',
-      status: 'in-progress',
+      title: 'Making flash cards for the cyber threats, logical security, physical security',
+      description: 'Create educational flashcards covering key cybersecurity threats and security vurnerabilities.',
+      assignedTo: ['Amos Zulu', 'Charity Mwansa Kunda', 'Jessica Sumaili', 'Emmanuel Kasuba', 'Francis Mwamba', 'Paul Kashiba', 'malama', 'kondwani', 'donald kaoma'],
+      dueDate: '2025-09-23',
+      status: 'Completed',
       priority: 'medium',
-      progress: 40
+      progress: 100
     },
     {
       id: 3,
       title: 'Website Development & Maintenance',
       description: 'Develop and maintain the company website with updated content, security features, and user engagement tools.',
-      assignedTo: ['Emmanuel Kasuba', 'Paul Kashiba'],
-      dueDate: '2024-10-25',
+      assignedTo: ['Emmanuel Kasuba', 'Paul Kashiba', 'Francis Mwamba', 'Amos Zulu', 'malama ', 'kondwani', 'donald kaoma'],
+      dueDate: '2024-09-30',
       status: 'completed',
       priority: 'high',
       progress: 100
     },
     {
       id: 4,
-      title: 'Social Media Campaign Strategy',
-      description: 'Develop and implement social media campaign to promote cybersecurity awareness among youth.',
-      assignedTo: ['Jessica Sumaili'],
-      dueDate: '2024-11-20',
-      status: 'not-started',
+      title: 'Xubuntu power point presentation',
+      description: 'Create a comprehensive PowerPoint presentation on Xubuntu, covering download, installation, challenges faced and its advantages',
+      assignedTo: ['Jessica Sumaili', 'Donald Kaoma', 'Francis Mwamba', 'Emmanuel Kasuba', 'Charity Mwansa Kunda', 'Amos Zulu', 'Paul Kashiba'],
+      dueDate: '2025-10-01',
+      status: 'Completed',
       priority: 'medium',
-      progress: 0
+      progress: 100
     },
     {
       id: 5,
-      title: 'Partnership Outreach Program',
-      description: 'Reach out to schools and organizations for potential partnerships and program implementations.',
-      assignedTo: ['Francis Mwamba', 'Amos Zulu'],
-      dueDate: '2024-12-05',
+      title: 'finalizastion meeting',
+      description: 'every one going through the work done and making final touches',
+      assignedTo: ['Francis Mwamba', 'Amos Zulu', 'Emmanuel kasuba','Charity mwansa','Donald ','kondwani','Malama','Paul kashiba',''],
+      dueDate: '2025-10-02',
       status: 'in-progress',
       priority: 'high',
       progress: 30
@@ -271,14 +281,22 @@ const AssignedWork = () => {
             Contact the project manager to update your assignment status or discuss any challenges you're facing.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button asChild size="lg" variant="secondary" className="bg-white text-brand-blue-dark hover:bg-blue-50">
-              <Link to="/contact">
-                Contact Project Manager
-                <ArrowRight className="ml-2 h-5 w-5" />
-              </Link>
+            <Button 
+              onClick={handleContactProjectManager}
+              size="lg" 
+              variant="secondary" 
+              className="bg-white text-brand-blue-dark hover:bg-blue-50"
+            >
+              Contact Project Manager
+              <ArrowRight className="ml-2 h-5 w-5" />
             </Button>
-            <Button asChild size="lg" variant="outline" className="border-white/20 text-white hover:bg-white/10">
-              <Link to="/team">View Team Members</Link>
+            <Button 
+              onClick={handleViewTeamMembers}
+              size="lg" 
+              variant="outline" 
+              className="border-white/20 text-white hover:bg-white/10"
+            >
+              View Team Members
             </Button>
           </div>
         </div>
