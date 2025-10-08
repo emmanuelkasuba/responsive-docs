@@ -9,10 +9,29 @@ export default defineConfig(({ mode }) => ({
     host: "::",
     port: 8080,
   },
-  plugins: [react(), mode === "development" && componentTagger()].filter(Boolean),
+  plugins: [
+    react(),
+    mode === "development" && componentTagger()
+  ].filter(Boolean),
   resolve: {
     alias: {
       "@": path.resolve(__dirname, "./src"),
     },
   },
+  build: {
+    outDir: "dist",
+    sourcemap: mode === "development",
+    rollupOptions: {
+      output: {
+        manualChunks: {
+          vendor: ["react", "react-dom", "react-router-dom"],
+          firebase: ["firebase/app", "firebase/firestore", "firebase/analytics", "firebase/storage", "firebase/auth"],
+          ui: ["lucide-react", "react-hot-toast"]
+        }
+      }
+    }
+  },
+  optimizeDeps: {
+    include: ["react", "react-dom", "react-router-dom"]
+  }
 }));

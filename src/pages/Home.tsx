@@ -38,7 +38,7 @@ const Home = () => {
                   <span className="text-brand-yellow drop-shadow-glow">Simple & Accessible</span>
                 </h1>
                 <p className="text-xl text-blue-100 max-w-lg">
-                  We translate technical complexity into clear, practical learning experiences for students, educators, and professionals.
+                  We translate technical complexity into clear, practical learning experiences for The lovely public.
                 </p>
               </div>
               <div className="flex flex-col sm:flex-row gap-4">
@@ -56,7 +56,7 @@ const Home = () => {
                   variant="outline" 
                   className="border-2 border-brand-yellow text-brand-yellow hover:bg-brand-yellow hover:text-brand-blue-dark"
                 >
-                  Get Started
+                  Contact us
                 </Button>
               </div>
             </div>
@@ -82,22 +82,22 @@ const Home = () => {
               <div className="mx-auto w-16 h-16 bg-gradient-blue-yellow rounded-full flex items-center justify-center mb-4 shadow-glow">
                 <Users className="h-8 w-8 text-white" />
               </div>
-              <h3 className="text-2xl font-bold text-foreground">Students First</h3>
-              <p className="text-muted-foreground">Educational programs designed for learners of all backgrounds</p>
+              <h3 className="text-2xl font-bold text-foreground">Individuals</h3>
+              <p className="text-muted-foreground">Each individual of group 7 has held there responsibity well.</p>
             </div>
             <div className="text-center hover:scale-105 transition-transform duration-300">
               <div className="mx-auto w-16 h-16 bg-gradient-blue-yellow rounded-full flex items-center justify-center mb-4 shadow-glow">
                 <BookOpen className="h-8 w-8 text-white" />
               </div>
-              <h3 className="text-2xl font-bold text-foreground">Hands-On Learning</h3>
-              <p className="text-muted-foreground">Practical experiences through labs, simulations, and case studies</p>
+              <h3 className="text-2xl font-bold text-foreground">Participation </h3>
+              <p className="text-muted-foreground">Practipation has been execelent, each group member contributes there ideas well.</p>
             </div>
             <div className="text-center hover:scale-105 transition-transform duration-300">
               <div className="mx-auto w-16 h-16 bg-gradient-blue-yellow rounded-full flex items-center justify-center mb-4 shadow-glow">
                 <Shield className="h-8 w-8 text-white" />
               </div>
-              <h3 className="text-2xl font-bold text-foreground">Cyber Literacy</h3>
-              <p className="text-muted-foreground">Building universal understanding of digital security</p>
+              <h3 className="text-2xl font-bold text-foreground">Enthusiasim </h3>
+              <p className="text-muted-foreground">Each memeber has an interest in Cybersecurity and the group projects </p>
             </div>
           </div>
         </div>
@@ -116,7 +116,7 @@ const Home = () => {
               </CardHeader>
               <CardContent>
                 <p className="text-muted-foreground leading-relaxed">
-                  To demystify Cybersecurity by providing structured, hands-on education that equips learners of all backgrounds with the skills to navigate and secure the digital age.
+                  To Ensure that everyone, regardless of background or technical skill, has access to high-quality cybersecurity education that empowers them to navigate the digital world safely and confidently.
                 </p>
               </CardContent>
             </Card>
@@ -154,9 +154,9 @@ const Home = () => {
                 <div className="w-12 h-12 bg-gradient-blue-yellow rounded-lg flex items-center justify-center mb-4 group-hover:scale-110 group-hover:rotate-12 transition-all duration-300 shadow-glow">
                   <Zap className="h-6 w-6 text-white" />
                 </div>
-                <CardTitle className="text-brand-blue-dark">Cyber Literacy Bootcamps</CardTitle>
+                <CardTitle className="text-brand-blue-dark">Cyber Literacy</CardTitle>
                 <CardDescription>
-                  Beginner-friendly crash courses covering the foundations of cybersecurity
+                  Beginner-friendly lessons covering the foundations of cybersecurity
                 </CardDescription>
               </CardHeader>
             </Card>
@@ -178,9 +178,9 @@ const Home = () => {
                 <div className="w-12 h-12 bg-gradient-blue-yellow rounded-lg flex items-center justify-center mb-4 group-hover:scale-110 group-hover:rotate-12 transition-all duration-300 shadow-glow">
                   <Users className="h-6 w-6 text-white" />
                 </div>
-                <CardTitle className="text-brand-blue-dark">School & Club Partnerships</CardTitle>
+                <CardTitle className="text-brand-blue-dark">Club Partnerships</CardTitle>
                 <CardDescription>
-                  Customized learning modules for academic institutions and coding clubs
+                  Customized learning modules for academic coding clubs
                 </CardDescription>
               </CardHeader>
             </Card>

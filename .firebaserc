@@ -1,0 +1,9 @@
+{
+  "hosting": {
+    "site": "cyber-ed-inc-group7",
+    "public": "public"
+  },
+  "projects": {
+    "default": "cyber-ed-in"
+  }
+}
