@@ -1,73 +1,217 @@
-# Welcome to your Lovable project
+# Cyber Ed Group 7 - Cybersecurity Education WebApp
 
-## Project info
+A comprehensive cybersecurity education platform built with modern web technologies to teach security fundamentals and best practices.
 
-**URL**: https://lovable.dev/projects/7d5b3a41-5287-45a6-bc65-8a038563d556
+## 🛡️ Project Overview
 
-## How can I edit this code?
+Cyber Ed Group 7 is a full-stack web application designed to provide interactive cybersecurity education, threat awareness, and security best practices to users of all technical levels.
 
-There are several ways of editing your application.
+## ✨ Features
 
-**Use Lovable**
+### 🎯 Core Functionality
+- **Interactive Learning Modules** - Step-by-step cybersecurity tutorials
+- **Live Threat Intelligence** - Real-time cybersecurity news and updates
+- **Security Assessment** - Tools to evaluate your digital security posture
+- **Best Practices Guide** - Actionable security recommendations
+- **Progress Tracking** - Monitor your learning journey
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/7d5b3a41-5287-45a6-bc65-8a038563d556) and start prompting.
+### 🎨 User Experience
+- **Responsive Design** - Optimized for desktop, tablet, and mobile
+- **Modern UI/UX** - Clean, intuitive interface with cyber-themed design
+- **Dark/Light Mode** - Comfortable viewing in any lighting
+- **Accessibility** - WCAG compliant design patterns
 
-Changes made via Lovable will be committed automatically to this repo.
+## 🛠️ Technology Stack
 
-**Use your preferred IDE**
+### Frontend
+- **React 18** - Modern React with hooks and functional components
+- **TypeScript** - Type-safe development
+- **Tailwind CSS** - Utility-first styling with custom design system
+- **Shadcn/UI** - Reusable component library
+- **Lucide React** - Beautiful icons
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
+### Backend & Deployment
+- **Firebase Hosting** - Global CDN deployment
+- **Firebase Functions** - Serverless backend API
+- **NewsAPI** - Real-time news integration
 
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
+### Development Tools
+- **Vite** - Fast build tool and dev server
+- **ESLint** - Code linting and quality
+- **Prettier** - Code formatting
 
-Follow these steps:
+## 🚀 Quick Start
 
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
+### Prerequisites
+- Node.js 18+ 
+- npm or yarn
+- Firebase CLI (for deployment)
 
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
+### Installation
 
-# Step 3: Install the necessary dependencies.
-npm i
+1. **Clone the repository**
+   ```bash
+   git clone https://github.com/your-org/cyber-ed-group7.git
+   cd cyber-ed-group7
+   ```
 
-# Step 4: Start the development server with auto-reloading and an instant preview.
-npm run dev
+2. **Install dependencies**
+   ```bash
+   npm install
+   ```
+
+3. **Environment Setup**
+   Create `.env.local` file:
+   ```env
+   VITE_NEWS_API_KEY=your_newsapi_key_here
+   VITE_FIREBASE_PROJECT_ID=your_firebase_project_id
+   ```
+
+4. **Start development server**
+   ```bash
+   npm run dev
+   ```
+   Visit `http://localhost:5173`
+
+### Building for Production
+
+```bash
+npm run build
+npm run preview
 ```
 
-**Edit a file directly in GitHub**
+## 📁 Project Structure
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+```
+cyber-ed-group7/
+├── src/
+│   ├── components/          # Reusable UI components
+│   │   ├── ui/             # Shadcn/ui components
+│   │   └── sections/       # Page sections
+│   ├── pages/              # Main application pages
+│   ├── hooks/              # Custom React hooks
+│   ├── lib/                # Utility functions
+│   └── styles/             # Global styles
+├── public/                 # Static assets
+├── functions/              # Firebase Cloud Functions
+└── firebase.json          # Firebase configuration
+```
 
-**Use GitHub Codespaces**
+## 🎯 Key Components
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+### News Component
+- Real-time cybersecurity news feed
+- Fallback to curated content when API unavailable
+- Beautiful card-based layout with hover effects
+- Manual refresh capability
 
-## What technologies are used for this project?
+### Learning Modules
+- Interactive cybersecurity lessons
+- Progress tracking
+- Quiz assessments
+- Certificate generation
 
-This project is built with:
+### Security Tools
+- Password strength checker
+- Privacy audit tools
+- Security configuration guides
 
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
+## 🔧 Configuration
 
-## How can I deploy this project?
+### NewsAPI Integration
+1. Get free API key from [NewsAPI.org](https://newsapi.org)
+2. Add to environment variables:
+   ```env
+   VITE_NEWS_API_KEY=c058acc2bd954546812b5aa6ab753a39
+   ```
 
-Simply open [Lovable](https://lovable.dev/projects/7d5b3a41-5287-45a6-bc65-8a038563d556) and click on Share -> Publish.
+### Firebase Setup
+1. Create Firebase project
+2. Enable Hosting and Functions
+3. Configure firebase.json with your settings
 
-## Can I connect a custom domain to my Lovable project?
+## 🚀 Deployment
 
-Yes, you can!
+### Firebase Deployment
 
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
+1. **Build the project**
+   ```bash
+   npm run build
+   ```
 
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/features/custom-domain#custom-domain)
+2. **Deploy to Firebase**
+   ```bash
+   firebase deploy
+   ```
+
+### Environment-specific Deployments
+- **Production**: `main` branch auto-deploys to live site
+- **Staging**: `develop` branch for testing
+- **Preview**: PR deployments for review
+
+## 🤝 Contributing
+
+We welcome contributions! Please see our [Contributing Guide](CONTRIBUTING.md) for details.
+
+### Development Workflow
+1. Fork the repository
+2. Create feature branch (`git checkout -b feature/amazing-feature`)
+3. Commit changes (`git commit -m 'Add amazing feature'`)
+4. Push to branch (`git push origin feature/amazing-feature`)
+5. Open Pull Request
+
+### Code Standards
+- Use TypeScript for type safety
+- Follow React best practices
+- Write meaningful component and variable names
+- Include proper error handling
+- Ensure mobile responsiveness
+
+## 🐛 Troubleshooting
+
+### Common Issues
+
+**News Feed Not Loading**
+- Check NewsAPI key in environment variables
+- Verify CORS configuration for Firebase Functions
+- Ensure API rate limits aren't exceeded
+
+**Build Failures**
+- Clear node_modules and reinstall dependencies
+- Check TypeScript compilation errors
+- Verify all environment variables are set
+
+**Deployment Issues**
+- Ensure Firebase CLI is logged in
+- Verify firebase.json configuration
+- Check project permissions in Firebase console
+
+## 📞 Support
+
+- **Documentation**: [Project Wiki]()
+- **Issues**: [GitHub Issues]()
+- **Discussions**: [Community Forum]()
+- **Email**: kasubaemmanuel@gmail.com
+
+## 📄 License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+## 🙏 Acknowledgments
+
+- **NewsAPI** for providing news data
+- **Shadcn/UI** for component inspiration
+- **Firebase** for hosting and serverless functions
+- **Tailwind CSS** for utility-first CSS framework
+
+## 🔄 Changelog
+
+### v1.0.0 (Current)
+- Initial release with core cybersecurity modules
+- Real-time news integration
+- Responsive design implementation
+- Firebase deployment setup
+
+---
+
+**Built with ❤️ by Cyber Ed Group 7 - Making cybersecurity education accessible to everyone.**
