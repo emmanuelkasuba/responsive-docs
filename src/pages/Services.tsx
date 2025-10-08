@@ -18,47 +18,47 @@ const Services = () => {
   const services = [
     {
       icon: Zap,
-      title: 'Cyber Literacy Bootcamps',
-      description: 'Beginner-friendly crash courses covering the foundations of cybersecurity',
+      title: 'Cyber Literacy',
+      description: 'Beginner-friendly fundamentals of cybersecurity for all ages',
       features: [
         'Introduction to cybersecurity concepts',
         'Common threats and vulnerabilities',
         'Basic protection strategies',
-        'Hands-on exercises and labs',
+        'Safe online practices',
         'Certificate of completion'
       ],
-      duration: '2-4 weeks',
+      duration: '1hr 30 min',
       level: 'Beginner',
       format: 'Interactive workshops'
     },
     {
       icon: Lock,
-      title: 'Digital Ethics & Privacy Workshops',
-      description: 'Building awareness on online behavior, personal data protection, and surveillance ethics',
+      title: 'Digital Ethics',
+      description: 'Exploring the ethical implications of technology use',
       features: [
         'Understanding digital privacy rights',
         'Data protection best practices',
         'Social media security',
-        'Online surveillance awareness',
+        'Recognizing misinformation and scams',
         'Ethical decision-making in digital spaces'
       ],
-      duration: '1-2 weeks',
+      duration: '1hrs 30 min',
       level: 'All levels',
       format: 'Discussion-based sessions'
     },
     {
       icon: Users,
-      title: 'School & Club Partnerships',
-      description: 'Customized learning modules for academic institutions and coding clubs',
+      title: 'Students and club',
+      description: 'Customized learning for students and coding clubs',
       features: [
-        'Curriculum integration support',
-        'Teacher training programs',
-        'Student competition preparation',
-        'Resource development',
-        'Long-term educational partnerships'
+        'Hands-on coding challenges',
+        'Interactive discussions on cybersecurity topics',
+        'Student competition exercises',
+        'Taking ideas from students projects',
+        'short quizzes and assessments'
       ],
-      duration: 'Ongoing',
-      level: 'Customized',
+      duration: '1hr 30min',
+      level: 'student of all courses and clubs',
       format: 'Flexible delivery'
     }
   ];
@@ -70,10 +70,10 @@ const Services = () => {
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="text-center">
             <h1 className="text-4xl font-bold tracking-tight text-foreground sm:text-5xl lg:text-6xl mb-6">
-              Our Core Offerings
+              Core Offerings
             </h1>
             <p className="text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
-              Comprehensive cybersecurity education programs designed to meet learners where they are 
+              Comprehensive cybersecurity education programs designed to meet cyber ilitrate students where they are 
               and guide them towards digital security expertise.
             </p>
           </div>
@@ -142,7 +142,7 @@ const Services = () => {
           <div className="text-center mb-16">
             <h2 className="text-3xl font-bold text-foreground mb-4">Why Choose Our Programs?</h2>
             <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-              Our unique approach combines traditional teaching with modern, practical applications
+              Our unique approach combines traditional teaching with modern, practical applications, AT cyber ed language is not a barrier to learning cybersecurity.
             </p>
           </div>
 
@@ -156,7 +156,7 @@ const Services = () => {
               </CardHeader>
               <CardContent>
                 <p className="text-muted-foreground">
-                  Hands-on labs, simulations, and real-world case studies that build confidence and skills
+                  Hands-on workshop like discussions, simulations, and case studies that build confidence and skills
                 </p>
               </CardContent>
             </Card>
