@@ -48,7 +48,7 @@ const Services = () => {
     },
     {
       icon: Users,
-      title: 'Students and club',
+      title: 'Students and clubs',
       description: 'Customized learning for students and coding clubs',
       features: [
         'Hands-on coding challenges',
