@@ -2,7 +2,7 @@
 import { ReactNode, useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
-import { Shield, Menu, X, Users, Zap, Heart, BookOpen, Target, Mail, FileText, Calendar, AlertTriangle } from 'lucide-react';
+import { Shield, Menu, X, Users, Zap, Heart, BookOpen, Target, Mail, FileText, Calendar, AlertTriangle, Newspaper} from 'lucide-react';
 import logo from '@/assets/logo.png';
 
 interface LayoutProps {
@@ -23,6 +23,7 @@ const Layout = ({ children }: LayoutProps) => {
     { name: 'Contact', href: '/contact', icon: Mail },
     { name: 'Assigned Work', href: '/AssignedWork', icon: FileText },
     { name: 'Meeting Register', href: '/Register', icon: Calendar },
+    { name: 'News', href: '/news', icon: Newspaper },
   ];
 
   const isActive = (href: string) => location.pathname === href;

@@ -12,7 +12,7 @@ import {
 } from "@/components/ui/navigation-menu";
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
-import { Menu, X, Users, Shield, BookOpen, Target, Heart, Zap, FileText, Calendar } from "lucide-react";
+import { Menu, X, Users, Shield, BookOpen, Target, Heart, Zap, FileText, Calendar, Newspaper } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 const NavBar = () => {
@@ -60,6 +60,11 @@ const NavBar = () => {
       href: "/Register",
       icon: Calendar,
     },
+    {
+      title: "News",
+      href: "/News",
+      icon: Newspaper
+    }
   ];
 
   const isActivePath = (path: string) => {
