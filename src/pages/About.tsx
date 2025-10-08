@@ -44,7 +44,7 @@ const About = () => {
                 <div className="w-16 h-16 bg-gradient-to-br from-brand-blue to-cyber-accent rounded-xl flex items-center justify-center mb-6">
                   <Target className="h-8 w-8 text-white" />
                 </div>
-                <CardTitle className="text-3xl mb-4">Our Mission</CardTitle>
+                <CardTitle className="text-3xl mb-4">Mission</CardTitle>
               </CardHeader>
               <CardContent>
                 <p className="text-lg text-muted-foreground leading-relaxed">
@@ -59,7 +59,7 @@ const About = () => {
                 <div className="w-16 h-16 bg-gradient-to-br from-brand-blue to-cyber-accent rounded-xl flex items-center justify-center mb-6">
                   <Globe className="h-8 w-8 text-white" />
                 </div>
-                <CardTitle className="text-3xl mb-4">Our Vision</CardTitle>
+                <CardTitle className="text-3xl mb-4">Vision</CardTitle>
               </CardHeader>
               <CardContent>
                 <p className="text-lg text-muted-foreground leading-relaxed">
@@ -106,7 +106,7 @@ const About = () => {
               </CardHeader>
               <CardContent className="text-center">
                 <p className="text-muted-foreground">
-                  Teachers and club leaders looking to integrate cybersecurity into their curriculum
+                  club leaders looking to integrate cybersecurity into their Club lessons
                 </p>
               </CardContent>
             </Card>
@@ -120,7 +120,7 @@ const About = () => {
               </CardHeader>
               <CardContent className="text-center">
                 <p className="text-muted-foreground">
-                  Entry-level professionals seeking to build cybersecurity expertise
+                  learning professionals seeking to build cybersecurity expertise on compus
                 </p>
               </CardContent>
             </Card>
@@ -134,7 +134,7 @@ const About = () => {
               </CardHeader>
               <CardContent className="text-center">
                 <p className="text-muted-foreground">
-                  Community organizations & NGOs promoting digital literacy
+                  Community organizations promoting digital literacy
                 </p>
               </CardContent>
             </Card>
@@ -180,7 +180,7 @@ const About = () => {
         <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="text-3xl font-bold mb-6">Ready to Join Our Mission?</h2>
           <p className="text-xl text-blue-100 mb-8 max-w-2xl mx-auto">
-            Whether you're an educator, student, or organization, we'd love to work with you to build a more cyber-secure future.
+            if you're a student, we'd love to work with you to build a more cyber-secure future.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Button 
@@ -189,7 +189,7 @@ const About = () => {
               variant="secondary" 
               className="bg-white text-brand-blue-dark hover:bg-blue-50"
             >
-              Explore Our Programs
+              Explore
               <ArrowRight className="ml-2 h-5 w-5" />
             </Button>
             <Button 
