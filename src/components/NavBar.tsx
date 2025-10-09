@@ -60,11 +60,6 @@ const NavBar = () => {
       href: "/Register",
       icon: Calendar,
     },
-    {
-      title: "News",
-      href: "/News",
-      icon: Newspaper
-    }
   ];
 
   const isActivePath = (path: string) => {

@@ -9,16 +9,9 @@
     ],
     "rewrites": [
       {
-        "source": "/api/news",
-        "function": "getNews"
-      },
-      {
         "source": "**",
         "destination": "/index.html"
       }
     ]
-  },
-  "functions": {
-    "source": "functions"
   }
 }
