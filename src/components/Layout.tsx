@@ -1,8 +1,6 @@
-// Fixed Layout.tsx - Added Cyber Safety Floating Button
 import { ReactNode, useState, useEffect } from 'react';
-import { Link, useLocation } from 'react-router-dom';
+import { Shield, Zap, AlertTriangle, MessageCircle, ChevronUp, Phone, Mail } from 'lucide-react';
 import { Button } from '@/components/ui/button';
-import { Shield, Menu, X, Users, Zap, Heart, BookOpen, Target, Mail, FileText, Calendar, AlertTriangle, Newspaper} from 'lucide-react';
 import logo from '@/assets/logo.png';
 
 interface LayoutProps {
@@ -10,176 +8,72 @@ interface LayoutProps {
 }
 
 const Layout = ({ children }: LayoutProps) => {
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isCyberSafeVisible, setIsCyberSafeVisible] = useState(false);
-  const location = useLocation();
+  const [showScrollTop, setShowScrollTop] = useState(false);
 
-  const navigation = [
-    { name: 'Home', href: '/', icon: Shield },
-    { name: 'About', href: '/about', icon: Heart },
-    { name: 'Services', href: '/services', icon: BookOpen },
-    { name: 'Our Approach', href: '/approach', icon: Target },
-    { name: 'Team', href: '/team', icon: Users },
-    { name: 'Contact', href: '/contact', icon: Mail },
-    { name: 'Assigned Work', href: '/AssignedWork', icon: FileText },
-    { name: 'Meeting Register', href: '/Register', icon: Calendar },
-  ];
+  // Scroll handling for scroll-to-top button
+  useEffect(() => {
+    const handleScroll = () => {
+      const scrollTop = window.scrollY;
+      setShowScrollTop(scrollTop > 400);
+    };
 
-  const isActive = (href: string) => location.pathname === href;
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   // Show cyber safe button after a short delay
   useEffect(() => {
     const timer = setTimeout(() => {
       setIsCyberSafeVisible(true);
-    }, 2000);
+    }, 3000);
 
     return () => clearTimeout(timer);
   }, []);
 
   const handleCyberSafeClick = () => {
-    // You can customize this action - for example, show a modal, navigate to a page, etc.
-    window.open('/services#cyber-safety', '_blank');
+    window.open('/services#cyber-safety', '_self');
   };
 
   const handleCloseCyberSafe = () => {
     setIsCyberSafeVisible(false);
   };
 
+  const scrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
+  const handleQuickContact = () => {
+    window.location.href = 'mailto:kasubaemmanuel@gmail.com?subject=Quick Inquiry - Cyber Ed Inc.&body=Hello, I would like to learn more about your cybersecurity programs.';
+  };
+
   return (
     <div className="min-h-screen bg-background">
-      {/* Enhanced Navigation */}
-      <nav className="sticky top-0 z-50 border-b border-border/60 bg-background/95 backdrop-blur-xl supports-[backdrop-filter]:bg-background/60 shadow-cyber">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="flex h-16 items-center justify-between">
-            {/* Enhanced Logo */}
-            <Link to="/" className="flex items-center space-x-3 group flex-shrink-0 mr-4">
-              <div className="relative">
-                <div className="absolute inset-0 bg-gradient-to-br from-brand-blue to-cyber-accent rounded-lg blur-md opacity-75 group-hover:opacity-100 transition-opacity duration-300" />
-                <img 
-                  src={logo} 
-                  alt="Group 7 Cyber Ed Inc." 
-                  className="relative h-10 w-auto transition-all duration-300 group-hover:scale-110 group-hover:rotate-3 drop-shadow-glow" 
-                />
-              </div>
-              <div className="flex flex-col">
-                <span className="font-bold text-lg bg-gradient-to-r from-brand-blue to-cyber-accent bg-clip-text text-transparent">
-                  Group 7
-                </span>
-                <span className="text-xs text-muted-foreground -mt-1">Cyber Ed Inc.</span>
-              </div>
-            </Link>
-
-            {/* Enhanced Desktop Navigation - Improved spacing */}
-            <div className="hidden lg:flex items-center justify-center flex-1 max-w-4xl mx-8">
-              <div className="flex items-center flex-wrap gap-1 justify-center">
-                {navigation.map((item) => {
-                  const IconComponent = item.icon;
-                  return (
-                    <Link
-                      key={item.name}
-                      to={item.href}
-                      className={`flex items-center space-x-2 px-3 py-2 rounded-lg text-sm font-medium transition-all duration-300 whitespace-nowrap flex-shrink-0 ${
-                        isActive(item.href)
-                          ? 'bg-gradient-to-r from-brand-blue to-cyber-accent text-white shadow-glow scale-105'
-                          : 'text-muted-foreground hover:text-foreground hover:bg-accent/50 hover:scale-105 hover:shadow-cyber'
-                      }`}
-                    >
-                      <IconComponent className={`h-4 w-4 ${isActive(item.href) ? 'text-white' : ''}`} />
-                      <span>{item.name}</span>
-                    </Link>
-                  );
-                })}
-              </div>
-            </div>
-
-            {/* CTA Button - Desktop */}
-            <div className="hidden lg:flex items-center flex-shrink-0">
-              <Button 
-                asChild 
-                variant="flashy" 
-                size="sm" 
-                className="ml-4 hover:scale-105 transition-transform duration-300 whitespace-nowrap"
-              >
-                <Link to="/contact">
-                  <Zap className="h-4 w-4 mr-2" />
-                  Get Started
-                </Link>
-              </Button>
-            </div>
-
-            {/* Enhanced Mobile menu button */}
-            <div className="flex lg:hidden items-center space-x-2">
-              <Button
-                variant="ghost"
-                size="sm"
-                onClick={() => setIsMenuOpen(!isMenuOpen)}
-                aria-label="Toggle menu"
-                className="hover:bg-accent/50 hover:scale-105 transition-all duration-300"
-              >
-                {isMenuOpen ? (
-                  <X className="h-5 w-5 text-brand-blue" />
-                ) : (
-                  <Menu className="h-5 w-5 text-brand-blue" />
-                )}
-              </Button>
-            </div>
-          </div>
-        </div>
-
-        {/* Enhanced Mobile Navigation */}
-        {isMenuOpen && (
-          <div className="lg:hidden animate-in fade-in-50 slide-in-from-top-5 duration-300">
-            <div className="px-4 pt-2 pb-4 space-y-2 bg-background/95 backdrop-blur-xl border-t border-border/60">
-              {navigation.map((item) => {
-                const IconComponent = item.icon;
-                return (
-                  <Link
-                    key={item.name}
-                    to={item.href}
-                    className={`flex items-center space-x-3 px-4 py-3 rounded-xl text-base font-medium transition-all duration-300 ${
-                      isActive(item.href)
-                        ? 'bg-gradient-to-r from-brand-blue to-cyber-accent text-white shadow-glow'
-                        : 'text-muted-foreground hover:text-foreground hover:bg-accent/50'
-                    }`}
-                    onClick={() => setIsMenuOpen(false)}
-                  >
-                    <IconComponent className={`h-5 w-5 ${isActive(item.href) ? 'text-white' : ''}`} />
-                    <span>{item.name}</span>
-                  </Link>
-                );
-              })}
-              
-              {/* Mobile CTA Button */}
-              <div className="pt-4 border-t border-border/40">
-                <Button 
-                  asChild 
-                  variant="flashy" 
-                  className="w-full hover:scale-105 transition-transform duration-300"
-                  onClick={() => setIsMenuOpen(false)}
-                >
-                  <Link to="/contact" className="flex items-center justify-center">
-                    <Zap className="h-4 w-4 mr-2" />
-                    Get Started
-                  </Link>
-                </Button>
-              </div>
-            </div>
-          </div>
-        )}
-      </nav>
-
-      {/* Main content with enhanced spacing */}
+      {/* Main content - NavBar is now separate */}
       <main className="relative">
         {/* Subtle background pattern */}
-        <div className="absolute inset-0 -z-10 bg-[radial-gradient(circle_at_1px_1px,rgba(59,130,246,0.1)_1px,transparent_0)] bg-[length:32px_32px]" />
-        <div className="pt-16"> {/* Added padding to account for fixed navbar */}
+        <div className="absolute inset-0 -z-10 bg-[radial-gradient(circle_at_1px_1px,rgba(59,130,246,0.05)_1px,transparent_0)] bg-[length:32px_32px]" />
+        
+        {/* Content starts below fixed navbar (h-16) */}
+        <div className="pt-16">
           {children}
         </div>
       </main>
 
+      {/* Scroll to Top Button */}
+      {showScrollTop && (
+        <button
+          onClick={scrollToTop}
+          className="fixed bottom-24 right-6 z-40 bg-gradient-to-br from-blue-600 to-cyan-500 text-white p-3 rounded-full shadow-2xl hover:shadow-glow transition-all duration-300 hover:scale-110 group"
+          aria-label="Scroll to top"
+        >
+          <ChevronUp className="h-5 w-5 transition-transform group-hover:-translate-y-0.5" />
+        </button>
+      )}
+
       {/* Cyber Safety Floating Button */}
       {isCyberSafeVisible && (
-        <div className="fixed bottom-6 right-6 z-50 animate-in fade-in-50 slide-in-from-bottom-5 duration-500">
+        <div className="fixed bottom-6 right-6 z-40 animate-in fade-in-50 slide-in-from-bottom-5 duration-500">
           <div className="relative group">
             {/* Glow effect */}
             <div className="absolute inset-0 bg-gradient-to-r from-green-500 to-emerald-400 rounded-full blur-md opacity-75 group-hover:opacity-100 transition-opacity duration-300 animate-pulse" />
@@ -187,10 +81,10 @@ const Layout = ({ children }: LayoutProps) => {
             {/* Main button */}
             <Button
               onClick={handleCyberSafeClick}
-              className="relative bg-gradient-to-r from-green-600 to-emerald-500 hover:from-green-700 hover:to-emerald-600 text-white font-bold py-3 px-6 rounded-full shadow-2xl hover:shadow-glow transition-all duration-300 hover:scale-105 border-2 border-white/20"
+              className="relative bg-gradient-to-r from-green-600 to-emerald-500 hover:from-green-700 hover:to-emerald-600 text-white font-bold py-3 px-6 rounded-full shadow-2xl hover:shadow-glow transition-all duration-300 hover:scale-105 border-2 border-white/20 group/cyber"
               size="lg"
             >
-              <Shield className="h-5 w-5 mr-2" />
+              <Shield className="h-5 w-5 mr-2 transition-transform group-hover/cyber:scale-110" />
               Be Cyber Safe
             </Button>
 
@@ -203,14 +97,16 @@ const Layout = ({ children }: LayoutProps) => {
               ×
             </button>
 
-            {/* Tooltip */}
-            <div className="absolute bottom-full right-0 mb-2 hidden group-hover:block animate-in fade-in-50 duration-200">
-              <div className="bg-gray-900 text-white text-sm rounded-lg py-2 px-3 shadow-xl max-w-xs border border-gray-700">
-                <div className="flex items-center gap-2 mb-1">
-                  <AlertTriangle className="h-4 w-4 text-yellow-400" />
-                  <span className="font-semibold">Stay Protected!</span>
+            {/* Enhanced Tooltip */}
+            <div className="absolute bottom-full right-0 mb-3 hidden group-hover:block animate-in fade-in-50 zoom-in-95 duration-200">
+              <div className="bg-gray-900 text-white text-sm rounded-xl py-3 px-4 shadow-2xl max-w-xs border border-gray-700 backdrop-blur-sm">
+                <div className="flex items-center gap-2 mb-2">
+                  <AlertTriangle className="h-4 w-4 text-yellow-400 flex-shrink-0" />
+                  <span className="font-semibold text-yellow-400">Stay Protected!</span>
                 </div>
-                <p className="text-gray-300">Learn essential cybersecurity tips to keep yourself safe online</p>
+                <p className="text-gray-300 text-xs leading-relaxed">
+                  Learn essential cybersecurity tips to protect yourself from online threats and build digital confidence.
+                </p>
                 <div className="absolute top-full right-4 -mt-1 border-4 border-transparent border-t-gray-900"></div>
               </div>
             </div>
@@ -218,25 +114,37 @@ const Layout = ({ children }: LayoutProps) => {
         </div>
       )}
 
+      {/* Quick Contact Floating Button for Mobile */}
+      <div className="fixed bottom-6 left-6 z-40 lg:hidden">
+        <Button
+          onClick={handleQuickContact}
+          className="bg-gradient-to-r from-blue-600 to-cyan-500 text-white p-4 rounded-full shadow-2xl hover:shadow-glow transition-all duration-300 hover:scale-105"
+          size="icon"
+          aria-label="Quick contact"
+        >
+          <MessageCircle className="h-5 w-5" />
+        </Button>
+      </div>
+
       {/* Enhanced Footer */}
-      <footer className="relative bg-gradient-to-br from-brand-blue-dark via-brand-blue to-cyber-accent border-t-2 border-brand-yellow/40">
-        {/* Simplified background pattern */}
+      <footer className="relative bg-gradient-to-br from-blue-900 via-blue-700 to-cyan-600 border-t-2 border-yellow-400/40">
+        {/* Background pattern */}
         <div className="absolute inset-0 opacity-5 bg-[linear-gradient(45deg,transparent_25%,rgba(255,255,255,0.1)_50%,transparent_75%,transparent_100%)] bg-[length:20px_20px]" />
         
         <div className="relative mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8">
           <div className="text-center">
             {/* Enhanced Logo in Footer */}
-            <div className="flex items-center justify-center space-x-3 mb-6">
+            <div className="flex items-center justify-center space-x-3 mb-8">
               <div className="relative">
-                <div className="absolute inset-0 bg-gradient-to-br from-brand-yellow to-white rounded-lg blur-md opacity-50" />
+                <div className="absolute inset-0 bg-gradient-to-br from-yellow-400 to-white rounded-lg blur-md opacity-50" />
                 <img 
                   src={logo} 
                   alt="Group 7 Cyber Ed Inc." 
-                  className="relative h-12 w-auto drop-shadow-2xl" 
+                  className="relative h-14 w-auto drop-shadow-2xl" 
                 />
               </div>
               <div className="flex flex-col text-left">
-                <span className="font-bold text-xl text-white drop-shadow-glow">
+                <span className="font-bold text-2xl text-white drop-shadow-glow">
                   Group 7
                 </span>
                 <span className="text-sm text-blue-100 -mt-1">Cyber Ed Inc.</span>
@@ -244,42 +152,78 @@ const Layout = ({ children }: LayoutProps) => {
             </div>
 
             {/* Mission Statement */}
-            <p className="text-blue-100 font-medium text-lg mb-4 max-w-2xl mx-auto leading-relaxed">
-              Making cybersecurity simple, accessible, and impactful for everyone.
+            <p className="text-blue-100 font-medium text-lg mb-6 max-w-2xl mx-auto leading-relaxed">
+              Making cybersecurity simple, accessible, and impactful for everyone through innovative education.
             </p>
 
             {/* Quick Links */}
-            <div className="flex flex-wrap justify-center gap-6 mb-6">
-              {navigation.map((item) => (
-                <Link
-                  key={item.name}
-                  to={item.href}
-                  className="text-blue-100 hover:text-white transition-colors duration-300 text-sm font-medium hover:scale-105 transform"
-                >
-                  {item.name}
-                </Link>
-              ))}
+            <div className="flex flex-wrap justify-center gap-6 mb-8">
+              <a href="/" className="text-blue-100 hover:text-white transition-all duration-300 text-sm font-medium hover:scale-105 transform hover:underline">
+                Home
+              </a>
+              <a href="/about" className="text-blue-100 hover:text-white transition-all duration-300 text-sm font-medium hover:scale-105 transform hover:underline">
+                About
+              </a>
+              <a href="/services" className="text-blue-100 hover:text-white transition-all duration-300 text-sm font-medium hover:scale-105 transform hover:underline">
+                Services
+              </a>
+              <a href="/approach" className="text-blue-100 hover:text-white transition-all duration-300 text-sm font-medium hover:scale-105 transform hover:underline">
+                Approach
+              </a>
+              <a href="/team" className="text-blue-100 hover:text-white transition-all duration-300 text-sm font-medium hover:scale-105 transform hover:underline">
+                Team
+              </a>
+              <a href="/contact" className="text-blue-100 hover:text-white transition-all duration-300 text-sm font-medium hover:scale-105 transform hover:underline">
+                Contact
+              </a>
+              <a href="/assignedwork" className="text-blue-100 hover:text-white transition-all duration-300 text-sm font-medium hover:scale-105 transform hover:underline">
+                Assigned Work
+              </a>
+              <a href="/register" className="text-blue-100 hover:text-white transition-all duration-300 text-sm font-medium hover:scale-105 transform hover:underline">
+                Meeting Register
+              </a>
             </div>
 
             {/* Contact Info */}
-            <div className="flex flex-col sm:flex-row justify-center items-center gap-6 text-blue-100 text-sm mb-6">
-              <div className="flex items-center space-x-2">
+            <div className="flex flex-col sm:flex-row justify-center items-center gap-6 text-blue-100 text-sm mb-8">
+              <div className="flex items-center space-x-2 hover:text-white transition-colors duration-300">
                 <Mail className="h-4 w-4" />
-                <span>info@group7cybered.com</span>
+                <a href="mailto:kasubaemmanuel@gmail.com" className="hover:underline">
+                  kasubaemmanuel@gmail.com
+                </a>
               </div>
               <div className="flex items-center space-x-2">
-                <Zap className="h-4 w-4" />
+                <Zap className="h-4 w-4 text-yellow-400" />
                 <span>Building Cyber Literacy Since 2024</span>
               </div>
             </div>
 
+            {/* Social Links */}
+            <div className="flex justify-center space-x-4 mb-6">
+              <Button variant="ghost" size="icon" className="text-blue-100 hover:text-white hover:bg-white/10 rounded-full">
+                <span className="sr-only">LinkedIn</span>
+                {/* Replace with actual LinkedIn icon */}
+                <div className="w-5 h-5 bg-current rounded-sm"></div>
+              </Button>
+              <Button variant="ghost" size="icon" className="text-blue-100 hover:text-white hover:bg-white/10 rounded-full">
+                <span className="sr-only">GitHub</span>
+                {/* Replace with actual GitHub icon */}
+                <div className="w-5 h-5 bg-current rounded-full"></div>
+              </Button>
+              <Button variant="ghost" size="icon" className="text-blue-100 hover:text-white hover:bg-white/10 rounded-full">
+                <span className="sr-only">Twitter</span>
+                {/* Replace with actual Twitter icon */}
+                <div className="w-5 h-5 bg-current rounded-sm"></div>
+              </Button>
+            </div>
+
             {/* Copyright */}
             <div className="pt-6 border-t border-blue-400/30">
-              <p className="text-sm text-brand-yellow-dim font-medium">
+              <p className="text-sm text-yellow-300 font-medium">
                 © 2024 Group 7 Cyber Ed Inc. All rights reserved.
               </p>
-              <p className="text-xs text-blue-200/70 mt-1">
-                Empowering the next generation of cyber defenders.
+              <p className="text-xs text-blue-200/70 mt-2">
+                Empowering the next generation of cyber defenders through accessible education.
               </p>
             </div>
           </div>
